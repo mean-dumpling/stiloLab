@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Illustrazioni delle card — copia disattivata</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    body { background: var(--cream-soft); font-family: var(--font-sans); }
+    .lab { max-width: 1100px; margin: 0 auto; padding: 34px 24px 70px; }
+    .nota { background: #f7f3ea; border-radius: 10px; padding: 14px 18px;
+            font-size: 13px; line-height: 1.6; color: #8b8375; margin-bottom: 26px; }
+    .nota b { color: var(--ink); }
+    .griglia { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    .prova { border-radius: 14px; padding: 22px 20px; }
+    .prova .fig { height: 150px; margin-bottom: 10px; }
+    .prova .fig svg { height: 100%; margin: 0 auto; display: block; }
+    .prova b { font-family: var(--font-serif); font-size: 26px; font-weight: 600; display: block; }
+    .prova span { font-size: 12px; color: #8b8375; }
+  </style>
+</head>
+<body>
+<div class="lab">
+  <h1 style="font-family:var(--font-serif);font-size:30px;margin-bottom:10px">Illustrazioni delle card</h1>
+  <p class="nota"><b>Copia disattivata.</b> Non sono più in uso: le card della home mostrano
+     la confezione del prodotto. Qui sono mostrate a dimensione reale (150&nbsp;px), ciascuna
+     col colore e il fondo del prodotto a cui apparteneva. Istruzioni in <code>README.txt</code>.</p>
+  <div class="griglia" id="griglia"></div>
+</div>
+
+<script src="../../data/products.js"></script>
+<script src="illustrazioni.js"></script>
+<script>
+  const perProdotto = window.PRODUCTS.map((p) => [p.displayName, p.illustration, p.theme.main, p.theme.cardBg]);
+  perProdotto.push(["(ripiego)", "leaf", "#59811c", "#f3f2e2"]);
+  document.getElementById("griglia").innerHTML = perProdotto
+    .map(([nome, key, colore, fondo]) => `
+      <div class="prova" style="background:${fondo}">
+        <div class="fig">${window.ILLUSTRATIONS[key](colore)}</div>
+        <b style="color:${colore}">${nome}</b>
+        <span>${key}</span>
+      </div>`)
+    .join("");
+</script>
+</body>
+</html>

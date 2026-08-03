@@ -1,0 +1,41 @@
+IMMAGINI DEGLI INGREDIENTI — provenienza e licenze
+==================================================
+
+ATTENZIONE: da questa revisione NON sono più tutte in pubblico dominio.
+Diverse immagini sono Creative Commons BY o BY-SA e OBBLIGANO a citare
+autore e licenza. La citazione è pubblicata in  crediti.html , linkato dal
+footer di tutte le pagine: se sostituisci un'immagine, aggiorna anche quella
+pagina, non solo questo file.
+
+Fonte: Wikimedia Commons. Scaricate ridimensionate (400-520 px di lato
+maggiore), che è l'ordine di grandezza a cui vengono mostrate nelle schede.
+
+Criterio: foto reale della materia prima ovunque sia disponibile. Restano
+rappresentazioni non fotografiche solo le molecole per cui non esiste alcuna
+foto (formule di struttura e modelli molecolari).
+
+file                 licenza          autore                                    pagina di origine
+--------------------------------------------------------------------------------------------------
+betulla.jpg          CC BY-SA 2.0     Percita                                   https://commons.wikimedia.org/wiki/File:Betula_pendula_Finland.jpg
+cranberry.jpeg       CC BY-SA 3.0     Sten Porse                                https://commons.wikimedia.org/wiki/File:Vaccinium-macrocarpon-total.JPG
+propoli.jpg          CC BY-SA 3.0     Maša Sinreih e Valentina Vivod            https://commons.wikimedia.org/wiki/File:Propolis2.JPG
+nac.png              Public domain    Jü                                        https://commons.wikimedia.org/wiki/File:(R)-N-Acetylcysteine_Structural_Formulae.png
+cardo-mariano.jpg    CC BY-SA 4.0     Krzysztof Ziarnek (Kenraiz)               https://commons.wikimedia.org/wiki/File:Silybum_marianum_kz11.jpg
+carciofo.jpg         CC BY-SA 3.0     Jamain                                    https://commons.wikimedia.org/wiki/File:Artichoke_J1.jpg
+tarassaco.jpg        CC0              Martin Ehrensberger                       https://commons.wikimedia.org/wiki/File:Dandelions_(259502879).jpg
+fumaria.jpg          CC BY-SA 4.0     Didier Descouens                          https://commons.wikimedia.org/wiki/File:(MHNT)_Fumaria_officinalis_-_Habit.jpg
+acido-lipoico.png    Public domain    Ben Mills                                 https://commons.wikimedia.org/wiki/File:Lipoic-acid-3D-vdW.png
+vitamine-b.png       Public domain    Solon                                     https://commons.wikimedia.org/wiki/File:Thiamine.svg
+folato.png           Public domain    Ben Mills                                 https://commons.wikimedia.org/wiki/File:Folic-acid-from-xtal-3D-bs-17.png
+curcuma.jpg          CC0              Govind Bhalerao                           https://commons.wikimedia.org/wiki/File:Close-up_of_freshly_harvested_Vasmat_turmeric_fingers.jpg
+vitamina-d.png       Public domain    Calvero                                   https://commons.wikimedia.org/wiki/File:Cholecalciferol.svg
+rodiola.jpg          CC BY 2.5        Opioła Jerzy                              https://commons.wikimedia.org/wiki/File:Rhodiola_rosea_a2.jpg
+reishi.jpg           CC0              William Bungay                            https://commons.wikimedia.org/wiki/File:Ganoderma_lucidum_102921711.jpg
+glutammina.png       Public domain    NEUROtiker                                https://commons.wikimedia.org/wiki/File:L-Glutamin_-_L-Glutamine.svg
+glutammina-3d.png    CC0              Jynto                                     https://commons.wikimedia.org/wiki/File:L-Glutamine-3D-balls.png
+agrumi.jpg           Public domain    Scott Bauer, USDA                         https://commons.wikimedia.org/wiki/File:Citrus_fruits.jpg
+rusco.jpg            CC0              bobwardell                                https://commons.wikimedia.org/wiki/File:Butcher%27s-broom_(Ruscus_aculeatus),_Hampshire_01.jpg
+ippocastano.jpg      CC BY-SA 4.0     Dominicus Johannes Bergsma                https://commons.wikimedia.org/wiki/File:Gebarsten_bolster_van_een_paardenkastanje_(Aesculus)_13-10-2022_(d.j.b.)_02.jpg
+vite-rossa.jpg       CC BY-SA 3.0     BerndtF                                   https://commons.wikimedia.org/wiki/File:Cabernet_Sauvignon_Gaillac.jpg
+magnesio.jpg         CC BY 3.0        Mark Fergus, CSIRO                        https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_2893_Crystalised_magnesium.jpg
+glicina.png          Public domain    Benjah-bmm27                              https://commons.wikimedia.org/wiki/File:Glycine-2D-skeletal.png

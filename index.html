@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stilo Lab — Benessere mirato, formule essenziali | Farmacia Stilo</title>
+  <meta name="description" content="Stilo Lab sviluppa integratori alimentari con ingredienti selezionati e formule essenziali, per accompagnarti ogni giorno nel tuo benessere naturale.">
+  <meta name="theme-color" content="#f7eedd">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236f9a2e' d='M18 4C10 5 5 10 5 17c0 1 .5 2 .5 2S7 20 9 20c7 0 10-6 9-16Z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="alternate" hreflang="en" href="en/index.html">
+</head>
+<body>
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Stilo Lab — Home">
+        <div class="logo-main">stilo<em>Lab</em></div>
+      </a>
+      <button class="nav-burger" aria-label="Apri il menu">&#9776;</button>
+      <nav class="nav" aria-label="Navigazione principale">
+        <a href="index.html">Home</a>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="valori.html">I nostri valori</a>
+        <a href="guida-consumatore.html">Guida al consumatore</a>
+        <a href="ingredienti.html">I nostri ingredienti</a>
+      </nav>
+      <div class="lang-switch" aria-label="Lingua / Language">
+        <span class="on">IT</span>
+        <a href="en/index.html" hreflang="en" lang="en">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+    <!-- ⚠ SFONDO TEMPORANEO (prova) — per tornare indietro cancella questo div
+         e il blocco "SFONDO HERO TEMPORANEO" in css/style.css -->
+    <div class="hero-bg-panel" aria-hidden="true">
+      <img src="assets/img/hero-sfondo-9.jpg" alt="">
+    </div>
+
+    <div class="hero-inner">
+      <div>
+        <h1 class="hero-title">Benessere mirato,<br>formule essenziali<span class="dot">.</span></h1>
+        <div class="hero-rule"></div>
+        <p class="hero-text">Stilo Lab sviluppa integratori alimentari con ingredienti selezionati e formule essenziali, per accompagnarti ogni giorno nel tuo benessere naturale.</p>
+        <a class="btn btn-solid" href="#prodotti">Scopri i prodotti <span class="btn-arrow">&rarr;</span></a>
+        <ul class="hero-badges" aria-label="I nostri impegni">
+          <li>Formulato da farmacisti</li>
+          <li>Estratti standardizzati e titolati</li>
+          <li class="badge-link"><a href="guida-consumatore.html#per-tutti">Senza glutine e lattosio</a></li>
+        </ul>
+      </div>
+      <!-- Lo scaffale di mockup stava qui: disattivato, snippet e istruzioni
+           in _disattivati/scaffale-hero/ -->
+    </div>
+  </section>
+
+  <!-- ═══════════ LE NOSTRE FORMULE ═══════════ -->
+  <section class="formules" id="prodotti">
+    <div class="section-leaf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <path d="M18 4C10 5 5 10 5 17c0 1 .5 2 .5 2S7 20 9 20c7 0 10-6 9-16Z"/><path d="M6 19C9 13 13 9 17 6"/>
+      </svg>
+    </div>
+    <h2 class="section-title">Le nostre formule, pensate per il tuo equilibrio.</h2>
+    <p class="section-sub">Integratori alimentari con ingredienti selezionati e formule essenziali.</p>
+
+    <div class="product-grid" id="product-grid"><!-- card generate da js/main.js --></div>
+  </section>
+
+  <!-- La "mappa del benessere" stava qui: disattivata, copia funzionante e
+       istruzioni per il ritorno in _disattivati/mappa-benessere/ -->
+
+  <!-- ═══════════ IL NOSTRO APPROCCIO ═══════════ -->
+  <section class="approach" id="metodo" aria-label="Il nostro approccio">
+    <div class="approach-inner">
+      <div class="section-leaf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M18 4C10 5 5 10 5 17c0 1 .5 2 .5 2S7 20 9 20c7 0 10-6 9-16Z"/><path d="M6 19C9 13 13 9 17 6"/>
+        </svg>
+      </div>
+      <h2 class="section-title">Il nostro approccio</h2>
+      <p class="section-sub approach-intro" id="approach-intro"></p>
+      <ol class="approach-steps" id="approach-steps"></ol>
+    </div>
+  </section>
+
+  <!-- ═══════════ PUNTI DI FORZA ═══════════ -->
+  <div class="features-wrap">
+    <div class="features-strip" id="features-strip"><!-- generata da js/main.js --></div>
+  </div>
+
+  <!-- ═══════════ CONTATTACI ═══════════ -->
+  <section class="cta">
+    <p class="cta-text">Non trovate quello che cercate? La prossima formula potrebbe nascere proprio dalla vostra esigenza.</p>
+    <a class="btn btn-solid" href="chi-siamo.html#contatti">Contattaci <span class="btn-arrow">&rarr;</span></a>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+        <a href="index.html" class="logo" aria-label="Stilo Lab — Home">
+          <div class="logo-main">stilo<em>Lab</em></div>
+        </a>
+        <p class="footer-note">© 2026 Stilo Lab – Farmacia Stilo.<br>Tutti i diritti riservati.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Informazioni legali</a>
+        <a href="crediti.html">Crediti immagini</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data/products.js"></script>
+  <script src="js/illustrations.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

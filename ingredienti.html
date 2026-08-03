@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I nostri ingredienti — Stilo Lab | Farmacia Stilo</title>
+  <meta name="description" content="Il glossario degli ingredienti delle formule Stilo Lab: cosa sono e perché li abbiamo scelti.">
+  <meta name="theme-color" content="#f7eedd">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236f9a2e' d='M18 4C10 5 5 10 5 17c0 1 .5 2 .5 2S7 20 9 20c7 0 10-6 9-16Z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="alternate" hreflang="en" href="en/ingredienti.html">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Stilo Lab — Home">
+        <div class="logo-main">stilo<em>Lab</em></div>
+      </a>
+      <button class="nav-burger" aria-label="Apri il menu">&#9776;</button>
+      <nav class="nav" aria-label="Navigazione principale">
+        <a href="index.html">Home</a>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="valori.html">I nostri valori</a>
+        <a href="guida-consumatore.html">Guida al consumatore</a>
+        <a href="ingredienti.html">I nostri ingredienti</a>
+      </nav>
+      <div class="lang-switch" aria-label="Lingua / Language">
+        <span class="on">IT</span>
+        <a href="en/ingredienti.html" hreflang="en" lang="en">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h1>I nostri ingredienti</h1>
+    <p>Pochi, scelti bene, in dosi che hanno senso. Il glossario qui sotto è generato automaticamente dalle formule della linea.</p>
+  </section>
+
+  <main class="page-body">
+    <div class="gloss-grid" id="gloss-grid"><!-- generato dallo script qui sotto --></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+        <a href="index.html" class="logo" aria-label="Stilo Lab — Home">
+          <div class="logo-main">stilo<em>Lab</em></div>
+        </a>
+        <p class="footer-note">© 2026 Stilo Lab – Farmacia Stilo.<br>Tutti i diritti riservati.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Informazioni legali</a>
+        <a href="crediti.html">Crediti immagini</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data/products.js"></script>
+  <script src="js/illustrations.js"></script>
+  <script src="js/site.js"></script>
+  <script>
+    /* Glossario generato dai dati: ogni voce "comeAgisce" dei prodotti
+       diventa una scheda, col colore e il link del prodotto di origine. */
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById("gloss-grid");
+      grid.innerHTML = window.PRODUCTS.flatMap((p) =>
+        p.comeAgisce.map(
+          (a) => `
+          <div class="gloss-card">
+            <a class="gloss-tag" style="background:${p.theme.main}" href="prodotti/${p.id}.html">${p.displayName}</a>
+            <h3>${a.title}</h3>
+            <p>${a.text}</p>
+          </div>`
+        )
+      ).join("");
+      window.initReveal();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi siamo — Stilo Lab | Farmacia Stilo</title>
+  <meta name="description" content="Stilo Lab nasce dall'esperienza della Farmacia Stilo: integratori con ingredienti selezionati e formule essenziali. Recapiti e modulo di contatto.">
+  <meta name="theme-color" content="#f7eedd">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236f9a2e' d='M18 4C10 5 5 10 5 17c0 1 .5 2 .5 2S7 20 9 20c7 0 10-6 9-16Z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="alternate" hreflang="en" href="en/chi-siamo.html">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Stilo Lab — Home">
+        <div class="logo-main">stilo<em>Lab</em></div>
+      </a>
+      <button class="nav-burger" aria-label="Apri il menu">&#9776;</button>
+      <nav class="nav" aria-label="Navigazione principale">
+        <a href="index.html">Home</a>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="valori.html">I nostri valori</a>
+        <a href="guida-consumatore.html">Guida al consumatore</a>
+        <a href="ingredienti.html">I nostri ingredienti</a>
+      </nav>
+      <div class="lang-switch" aria-label="Lingua / Language">
+        <span class="on">IT</span>
+        <a href="en/chi-siamo.html" hreflang="en" lang="en">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h1>Chi siamo</h1>
+    <p>Stilo Lab è la linea di integratori alimentari nata dall'esperienza quotidiana della Farmacia Stilo, al banco, accanto alle persone.</p>
+  </section>
+
+  <main class="page-body">
+    <h2>Dalla farmacia al laboratorio</h2>
+    <p>Ogni giorno, in farmacia, ascoltiamo esigenze concrete: chi cerca un supporto per le vie urinarie, chi vuole depurarsi dopo un periodo di eccessi, chi affronta mesi di stress e stanchezza. Stilo Lab nasce per rispondere a queste richieste con formule pensate da farmacisti, senza ingredienti superflui.</p>
+    <p>Non crediamo negli elenchi infiniti di componenti in dosi simboliche: crediamo in pochi ingredienti, scelti bene, in quantità che abbiano senso.</p>
+
+    <h2>Il nostro approccio</h2>
+    <p>Non ci limitiamo a inserire ingredienti "di tendenza". Ogni estratto viene scelto valutando qualità della materia prima, standardizzazione, letteratura scientifica, biodisponibilità e compatibilità con gli altri componenti della formula, con l'obiettivo di ottenere una composizione razionale e coerente.</p>
+    <p>Ogni formula nasce da un processo di sviluppo strutturato:</p>
+    <ul>
+      <li><strong>Revisione della letteratura scientifica</strong> — ogni scelta parte dalle evidenze disponibili.</li>
+      <li><strong>Selezione di estratti standardizzati</strong> — per una qualità costante nel tempo.</li>
+      <li><strong>Valutazione delle titolazioni</strong> — verifichiamo la concentrazione effettiva dei principi attivi.</li>
+      <li><strong>Definizione delle dosi efficaci</strong> — dosaggi coerenti con la letteratura, mai simbolici.</li>
+      <li><strong>Verifica delle sinergie</strong> — valutiamo compatibilità e sinergie tra gli ingredienti.</li>
+    </ul>
+
+    <h2>Una linea che cresce con voi</h2>
+    <p>La gamma Stilo Lab è in continua evoluzione: nuove formule nascono dal dialogo con chi entra in farmacia. Se non trovate quello che cercate, parlatene con noi — la prossima formula potrebbe nascere proprio dalla vostra esigenza.</p>
+
+    <section id="contatti">
+      <h2>Contattaci</h2>
+      <p>Per consigli sui prodotti, dubbi su dosaggi o richieste particolari: scriveteci o passate in farmacia.</p>
+
+      <div class="contact-grid" style="margin-top:26px">
+        <form class="contact-form" id="contact-form">
+          <div>
+            <label for="cf-name">Nome e cognome</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name">
+          </div>
+          <div>
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email">
+          </div>
+          <div>
+            <label for="cf-msg">Messaggio</label>
+            <textarea id="cf-msg" name="message" rows="6" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-solid">Invia il messaggio <span class="btn-arrow">&rarr;</span></button>
+          <p style="font-size:13px;color:var(--muted)">Inviando il modulo si apre il vostro client di posta con il messaggio precompilato.</p>
+        </form>
+
+        <div class="contact-info">
+          <div class="aside-card">
+            <h3>Farmacia Stilo</h3>
+            <p id="ci-address"></p>
+          </div>
+          <div class="aside-card">
+            <h3>Telefono</h3>
+            <p id="ci-phone"></p>
+          </div>
+          <div class="aside-card">
+            <h3>Email</h3>
+            <p id="ci-email"></p>
+          </div>
+          <div class="aside-card">
+            <h3>Orari</h3>
+            <p>Lun–Ven: 8:30 – 19:30<br>Sabato: 9:00 – 13:00</p>
+          </div>
+          <div class="aside-card">
+            <h3>WhatsApp</h3>
+            <p id="wa-nota">Scriveteci un messaggio: rispondiamo negli orari di apertura.</p>
+            <a class="btn btn-solid btn-wa" id="wa-link" href="#" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-.9 1.6-.6 2.7.4 1.4 1.3 2.7 1.5 2.9.2.2 2 3.2 5 4.3 1.8.7 2.5.7 3.4.6.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/>
+              </svg>
+              Apri WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+        <a href="index.html" class="logo" aria-label="Stilo Lab — Home">
+          <div class="logo-main">stilo<em>Lab</em></div>
+        </a>
+        <p class="footer-note">© 2026 Stilo Lab – Farmacia Stilo.<br>Tutti i diritti riservati.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Informazioni legali</a>
+        <a href="crediti.html">Crediti immagini</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data/products.js"></script>
+  <script src="js/illustrations.js"></script>
+  <script src="js/site.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      /* recapiti presi da data/products.js (window.SITE) */
+      document.getElementById("ci-address").textContent = window.SITE.address;
+      document.getElementById("ci-phone").textContent = window.SITE.phone;
+      document.getElementById("ci-email").textContent = window.SITE.email;
+
+      /* WhatsApp: il tasto si accende solo se il numero è stato configurato
+         in window.SITE.whatsapp (data/products.js) */
+      const wa = (window.SITE.whatsapp || "").replace(/\D/g, "");
+      const waLink = document.getElementById("wa-link");
+      if (wa) {
+        const testo = encodeURIComponent("Salve, vi scrivo dal sito Stilo Lab.");
+        waLink.href = `https://wa.me/${wa}?text=${testo}`;
+        waLink.target = "_blank";
+      } else {
+        waLink.setAttribute("aria-disabled", "true");
+        waLink.classList.add("is-off");
+        waLink.removeAttribute("href");
+        document.getElementById("wa-nota").textContent =
+          "Numero non ancora configurato: impostalo in data/products.js (SITE.whatsapp).";
+      }
+
+      /* il form apre il client di posta (nessun backend richiesto) */
+      document.getElementById("contact-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const f = e.target;
+        const subject = encodeURIComponent("Richiesta dal sito Stilo Lab — " + f.name.value);
+        const body = encodeURIComponent(f.message.value + "\n\n" + f.name.value + "\n" + f.email.value);
+        location.href = `mailto:${window.SITE.email}?subject=${subject}&body=${body}`;
+      });
+    });
+  </script>
+</body>
+</html>

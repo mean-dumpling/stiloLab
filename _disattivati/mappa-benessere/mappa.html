@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mappa del benessere — copia disattivata</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="mappa.css">
+  <style>
+    .nota {
+      max-width: 760px; margin: 30px auto 0; padding: 14px 18px;
+      background: #f7f3ea; border-radius: 10px;
+      font-size: 13px; line-height: 1.6; color: #8b8375;
+    }
+    .nota b { color: #35402f; }
+  </style>
+</head>
+<body>
+
+  <p class="nota"><b>Copia disattivata.</b> Questa sezione non fa più parte del sito:
+     è tenuta qui come riferimento, funzionante, per un eventuale ritorno.
+     Istruzioni in <code>README.txt</code>.</p>
+
+  <!-- ═══ La sezione com'era in index.html ═══ -->
+  <section class="wellness-map" id="mappa" aria-label="Mappa del benessere">
+    <div class="wmap-inner">
+      <div class="wmap-figure" id="wmap-figure"></div>
+      <div class="wmap-side">
+        <h2 class="section-title">La mappa del benessere</h2>
+        <p class="section-sub">Tocca una zona del corpo, o scegli un'esigenza, e scopri la formula pensata per te.</p>
+        <div class="wmap-chips" id="wmap-chips"></div>
+        <div class="wmap-products" id="wmap-products" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <script>window.__mappaBase = "../../";</script>
+  <script src="../../data/products.js"></script>
+  <script src="../../js/illustrations.js"></script>
+  <script src="../../js/site.js"></script>
+  <script src="mappa.js"></script>
+</body>
+</html>

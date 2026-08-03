@@ -1,0 +1,5 @@
+Metti qui le foto reali dei prodotti (PNG con sfondo trasparente consigliato).
+Poi in data/products.js imposta, nel prodotto corrispondente:
+
+  image: "assets/img/nomefile.png"      (sostituisce il mockup della scatola)
+  cardImage: "assets/img/nomefile.png"  (sostituisce l'illustrazione della card)
