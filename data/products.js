@@ -1,26 +1,4 @@
-/* ============================================================
-   STILO LAB — CATALOGO PRODOTTI
-   ------------------------------------------------------------
-   Questo file alimenta HOME, ANTEPRIMA e GLOSSARIO INGREDIENTI.
-   Le schede prodotto sono invece pagine HTML statiche nella cartella
-   prodotti/ : prodotti/<id>.html — si modificano direttamente lì.
 
-   ▸ Per AGGIUNGERE un prodotto: copia un blocco {...} e cambia i valori
-     (comparirà automaticamente in home, anteprima e glossario),
-     poi duplica una pagina in prodotti/ e rinominala prodotti/<id>.html.
-
-   ▸ Per SOSTITUIRE il mockup con una FOTO REALE:
-     metti la foto in  assets/img/  e imposta
-        image: "assets/img/nomefile.png"
-     (se image è null, il sito genera la scatola-mockup via CSS).
-     È la stessa immagine che compare nella card in home.
-
-   ▸ theme: colori del prodotto (pannello scatola, card, testi).
-   ▸ zones: aree evidenziate nello schema corpo dell'anteprima.
-     Valori possibili: "testa" | "nervi" | "addome" | "pelvi" | "muscoli" | "gambe"
-   ▸ perChi: icone possibili → donna, uomo, adulto, anziano, sport,
-     lavoro, stress, stagione, digestione, alimentazione, studio, notte
-   ============================================================ */
 
 window.SITE = {
   brandName: "stilo",
@@ -33,7 +11,7 @@ window.SITE = {
   formulesTitle: "Le nostre formule, pensate per il tuo equilibrio.",
   formulesSub: "Integratori alimentari con ingredienti selezionati e formule essenziali.",
 
-  /* ——— Sezione "Il nostro approccio" (home + chi-siamo) ——— */
+
   approach: {
     title: "Il nostro approccio",
     intro:
@@ -48,19 +26,16 @@ window.SITE = {
   },
 
   footerNote: "© 2026 Stilo Lab – Farmacia Stilo.\nTutti i diritti riservati.",
-  email: "info@farmaciastilo.it",
-  phone: "+39 000 000 0000",
+  email: "stilolabsrl@gmail.com",
+  phone: "+39 0365 502143",
 
-  /* ——— WhatsApp: DA CONFIGURARE ———
-     Metti il numero in formato internazionale, solo cifre: niente +, niente
-     spazi, niente zero iniziale. Es. per +39 333 123 4567 → "393331234567".
-     Finché resta vuoto, il tasto nella sezione contatti resta spento. */
-  whatsapp: "0365502143",
-  address: "Via Esempio 1, 00000 Città (XX)"
+
+  whatsapp: "390365502143",
+  address: "Farmacia Stilo, Via San Giovanni 32, 25080 Moniga del Garda (BS)"
 };
 
 window.PRODUCTS = [
-  /* ────────────────────────────────────────────── GEAR-UP */
+
   {
     id: "gear-up",
     name: "GEAR-UP",
@@ -71,7 +46,8 @@ window.PRODUCTS = [
     shortIngredients: "Rodiola e Reishi",
     format: "30 capsule vegetali",
     weight: "19,3 g",
-    image: "assets/img/gearupmockup.png",
+    price: "18,50",
+    image: "assets/img/gearupmockup.webp",
     cardImage: null,
     illustration: "bolt",
     theme: {
@@ -137,7 +113,6 @@ window.PRODUCTS = [
       "Rodiola (Rhodiola rosea L.) radice e.s. tit. 3% in Rosavin; Reishi (Ganoderma lucidum (Curtis) P.) sporoforo e.s. tit. 30% in polisaccaridi; Agente di rivestimento (involucro capsula): cellulosa; Agenti antiagglomeranti: acidi grassi, sali di magnesio degli acidi grassi, biossido di silicio; capsula in gelatina vegetale. Gluten free · Lactose free · Capsula vegetale, adatto a vegetariani e vegani."
   },
 
-  /* ────────────────────────────────────────────── DETOXA */
   {
     id: "detoxa",
     name: "DETOXA",
@@ -148,7 +123,8 @@ window.PRODUCTS = [
     shortIngredients: "Cardo mariano, Carciofo, Tarassaco, Fumaria e NAC",
     format: "30 capsule vegetali",
     weight: "19,3 g",
-    image: "assets/img/detoxamockup.png",
+    price: "18,50",
+    image: "assets/img/detoxamockup.webp",
     cardImage: null,
     illustration: "purify",
     theme: {
@@ -226,7 +202,6 @@ window.PRODUCTS = [
       "Cardo mariano (Silybum marianum (L.) Gaertn.) frutti e.s. tit. 80% in silimarina; Tarassaco (Taraxacum officinale (L.) Weber ex F.H.Wigg.) radice e.s. tit. 2% in inulina; Agente di rivestimento (involucro capsula): cellulosa; Carciofo (Cynara scolymus L.) foglie e.s. tit. 5% in acido clorogenico; Agenti antiagglomeranti: acidi grassi, sali di magnesio degli acidi grassi, biossido di silicio; Fumaria (Fumaria officinalis L.) parti aeree e.s. tit. 0,04% in protopina; N-acetilcisteina. Gluten free · Lactose free · Capsula vegetale, adatto a vegetariani e vegani."
   },
 
-  /* ────────────────────────────────────────────── NEVRALIS */
   {
     id: "nevralis",
     name: "NEVRALIS",
@@ -238,7 +213,8 @@ window.PRODUCTS = [
     shortIngredients: "Acido α-lipoico R.P., Vitamine B, Quatrefolic®, Curcuma Meriva® e Vitamina D",
     format: "30 compresse",
     weight: "41,4 g",
-    image: "assets/img/nevralismockup.png",
+    price: "25,00",
+    image: "assets/img/nevralismockup.webp",
     cardImage: null,
     illustration: "neuron",
     theme: {
@@ -305,26 +281,201 @@ window.PRODUCTS = [
       { nome: "Vitamina D (colecalciferolo)", quantita: "50 µg (1000% VNR*)" },
       { nome: "Vitamina B12 (cianocobalamina)", quantita: "10 µg (400% VNR*)" }
     ],
-    dosiRiferite: "per dose giornaliera (1 compressa) — *VNR: Valori Nutritivi di Riferimento",   // ⚠ %VNR calcolati dai valori del PDF: da verificare con l'etichetta
+    // Verificare le percentuali VNR.
+    dosiRiferite: "per dose giornaliera (1 compressa) — *VNR: Valori Nutritivi di Riferimento",
     modoUso:
       "Si consiglia l'assunzione di 1 compressa al giorno, preferibilmente durante un pasto, con un bicchiere d'acqua.",
     avvertenze:
       "Non superare la dose giornaliera consigliata. Tenere fuori dalla portata dei bambini al di sotto dei 3 anni. Gli integratori non vanno intesi come sostituti di una dieta variata ed equilibrata e di uno stile di vita sano. In caso di terapie farmacologiche in corso consultare il medico."
   },
 
-  /* ────────────────────────────────────────────── MAGBIS */
+  {
+    id: "cist-off",
+    name: "CIST-OFF",
+    displayName: "Cist-off",
+    tagline: "Per la funzionalità delle vie urinarie",
+    boxSubtitle:
+      "INTEGRATORE ALIMENTARE CON D-MANNOSIO, CRANBERRY, PROPOLI E N-ACETILCISTEINA",
+    shortIngredients: "D-Mannosio, Cranberry, Propoli e N-Acetilcisteina",
+    format: "30 capsule vegetali",
+    weight: "19 g",
+    price: "18,50",
+    image: "assets/img/cistoffmockup.webp",
+    cardImage: null,
+    illustration: "berries",
+    theme: {
+      main: "#b94d75",
+      dark: "#9e3c60",
+      cardBg: "#f4dfe4",
+      soft: "#efdce0"
+    },
+
+
+    zones: ["pelvi"],
+    zoneLabel: "Vie urinarie",
+    cosa:
+      "Una formula concentrata che unisce D-Mannosio, estratto di Cranberry, Propoli e N-Acetilcisteina per sostenere la funzionalità delle vie urinarie e il drenaggio dei liquidi corporei.",
+    perChi: [
+      { icon: "donna", label: "Donne soggette a episodi ricorrenti" },
+      { icon: "stress", label: "Nei periodi di maggiore vulnerabilità" },
+      { icon: "stagione", label: "Ai primi segnali di fastidio" },
+      { icon: "adulto", label: "Adulti che cercano un supporto naturale" }
+    ],
+    quando: ["Ai primi fastidi", "Come supporto nei cicli ricorrenti", "Dopo consiglio del farmacista"],
+
+
+    descrizione:
+      "CIST-OFF è un integratore formulato per favorire la funzionalità delle vie urinarie e sostenere il fisiologico equilibrio dell'apparato urinario, grazie alla combinazione sinergica di D-Mannosio, Cranberry titolato in proantocianidine (PAC), N-Acetilcisteina e Propoli standardizzata in galangina. La formulazione nasce dall'integrazione di ingredienti selezionati per agire su aspetti complementari della fisiologia urinaria, associando componenti tradizionalmente utilizzati per il benessere delle vie urinarie con ingredienti innovativi come la N-Acetilcisteina.",
+    claimTriple: ["Drenaggio", "Benessere urinario", "Protezione"],
+    benefici: [
+      "Favorisce la funzionalità delle vie urinarie",
+      "Favorisce il drenaggio dei liquidi corporei",
+      "Sostiene il fisiologico equilibrio dell'ambiente urinario",
+      "Supporta le naturali difese antiossidanti dell'organismo",
+      "Contribuisce al benessere generale dell'apparato urinario"
+    ],
+    comeAgisce: [
+      { title: "D-Mannosio", text: "Zucchero semplice naturalmente presente in alcune specie vegetali, tra cui la betulla. È tradizionalmente utilizzato per il supporto della funzionalità delle vie urinarie ed è studiato per il suo ruolo nei meccanismi di adesione batterica, in particolare nei confronti di Escherichia coli." },
+      { title: "Cranberry", text: "Frutti e.s. titolato al 25% in proantocianidine (PAC), la frazione bioattiva del cranberry maggiormente studiata: la presenza di PAC standardizzate garantisce un apporto controllato dei principali composti caratterizzanti dell'estratto. Favorisce la funzionalità delle vie urinarie e il drenaggio dei liquidi corporei." },
+      { title: "N-Acetilcisteina (NAC)", text: "Derivato della cisteina e precursore del glutatione, uno dei principali sistemi antiossidanti dell'organismo. La sua presenza nella formulazione è finalizzata a sostenere le naturali difese antiossidanti ed è oggetto di studi nell'ambito dei processi correlati al biofilm." },
+      { title: "Propoli", text: "Resina e.s. titolata al 12% in galangina, estratto vegetale ricco in composti fenolici e flavonoidi. La standardizzazione in galangina permette di garantire un apporto costante di uno dei principali componenti bioattivi della propoli." }
+    ],
+    sinergia: {
+      subtitle: "Una formulazione costruita per sinergia",
+      intro:
+        "CIST-OFF non nasce dalla semplice associazione di ingredienti tradizionalmente utilizzati per il benessere urinario: ogni componente è stato selezionato per contribuire a un approccio integrato e complementare.",
+      points: [
+        { title: "D-Mannosio", text: "supporto ai meccanismi fisiologici legati all'adesione batterica" },
+        { title: "Cranberry titolato in PAC", text: "apporto di proantocianidine standardizzate, frazione caratterizzante del cranberry" },
+        { title: "NAC", text: "supporto ai sistemi antiossidanti endogeni, oggetto di studi sui processi correlati al biofilm" },
+        { title: "Propoli standardizzata in galangina", text: "apporto di composti fenolici e flavonoidi bioattivi" }
+      ],
+      outro:
+        "La formulazione è stata sviluppata da farmacisti con un approccio basato sulla sinergia tra gli attivi, privilegiando estratti standardizzati, titolazioni dichiarate e materie prime di elevata qualità."
+    },
+    ingredientiTabella: [
+      { nome: "D-Mannosio", quantita: "200 mg", max: "1200 mg" },
+      { nome: "Cranberry e.s.", quantita: "150 mg", max: "900 mg" },
+      { nome: "di cui proantocianidine", quantita: "37,5 mg", max: "225 mg" },
+      { nome: "N-acetilcisteina", quantita: "100 mg", max: "600 mg" },
+      { nome: "Propoli e.s.", quantita: "50 mg", max: "300 mg" },
+      { nome: "di cui galangina", quantita: "6 mg", max: "36 mg" }
+    ],
+    dosiRiferite: "Contenuti medi per dose giornaliera.",
+    doseCol1: "1 capsula",
+    doseColMax: "Dose max (6 cps)",
+    modoUso:
+      "Assumere le capsule con acqua. Si consiglia l'assunzione a vescica svuotata, preferibilmente dopo la minzione, per favorire la presenza degli attivi nell'ambiente urinario; è consigliato mantenere una buona idratazione durante la giornata. Dose di mantenimento: 1 capsula al giorno. Dose intensiva: fino a 6 capsule al giorno, secondo necessità e secondo le indicazioni riportate in etichetta.",
+    avvertenze:
+      "Non superare la dose giornaliera consigliata. Tenere fuori dalla portata dei bambini di età inferiore a 3 anni. Gli integratori alimentari non vanno intesi come sostituti di una dieta varia ed equilibrata e di uno stile di vita sano. Non somministrare ai bambini al di sotto dei tre anni di età. Per la presenza di propoli, il prodotto è sconsigliato in caso di ipersensibilità ai derivati apistici. Per l'uso in gravidanza e allattamento si consiglia di sentire il parere del farmacista o del medico.",
+    conservazione:
+      "Conservare ben chiuso in luogo fresco e asciutto, al riparo dalla luce solare diretta e da fonti di calore. La data di fine validità si riferisce al prodotto correttamente conservato, in confezione integra.",
+    ingredientiCompleti:
+      "D-Mannosio; Cranberry (Vaccinium macrocarpon Aiton) frutti e.s. tit. 25% in proantocianidine; N-acetilcisteina; Agente di rivestimento (involucro capsula): cellulosa; Propoli resina e.s. tit. 12% in galangina; Agenti antiagglomeranti: biossido di silicio, acidi grassi, sali di magnesio degli acidi grassi. Gluten free · Lactose free · Capsula vegetale, adatto a vegetariani."
+  },
+
+  {
+    id: "flebocare",
+    name: "FLEBOCARE",
+    displayName: "Flebocare",
+    tagline: "Per la circolazione venosa e il microcircolo",
+    boxSubtitle:
+      "INTEGRATORE ALIMENTARE CON DIOSMINA® MICRONIZZATA, RUSCO, IPPOCASTANO E VITE ROSSA",
+    boxClaim: "MICROCIRCOLO · FUNZIONALITÀ VENOSA · PROTEZIONE VASCOLARE",
+    shortIngredients: "Diosmina® micronizzata, Rusco, Ippocastano e Vite rossa",
+    // Verificare formato, dosaggi e ingredienti.
+    format: "30 compresse",
+    weight: "33 g",
+    price: "18,50",
+    image: "assets/img/flebocaremockup.webp",
+    cardImage: null,
+    illustration: "flow",
+    theme: {
+      main: "#367e75",
+      dark: "#2e6e66",
+      cardBg: "#dcf1eb",
+      soft: "#dbe9e4"
+    },
+
+    zones: ["gambe"],
+    zoneLabel: "Gambe e microcircolo",
+    cosa:
+      "Quattro attivi complementari — Diosmina® micronizzata, Rusco, Ippocastano e Vite rossa — per sostenere la fisiologica funzionalità della circolazione venosa e del microcircolo, contribuendo al benessere degli arti inferiori e al mantenimento dell'integrità della parete vascolare.",
+    perChi: [
+      { icon: "donna", label: "Chi avverte pesantezza e gonfiore alle gambe" },
+      { icon: "lavoro", label: "Chi resta a lungo in piedi o seduto" },
+      { icon: "stagione", label: "Nei mesi caldi, quando il disagio aumenta" },
+      { icon: "adulto", label: "Adulti che vogliono sostenere il microcircolo" }
+    ],
+    quando: ["Sensazione di gambe pesanti", "In caso di emorroidi", "Lunghe giornate in piedi o alla scrivania", "Cicli periodici nei mesi caldi"],
+
+    descrizione:
+      "FLEBOCARE è un integratore sviluppato per sostenere la fisiologica funzionalità della circolazione venosa e del microcircolo, contribuendo al benessere degli arti inferiori e al mantenimento dell'integrità della parete vascolare. Agisce grazie all'azione sinergica di Diosmina® micronizzata, Rusco, Ippocastano e Vite rossa.",
+    claimTriple: ["Microcircolo", "Funzionalità venosa", "Protezione vascolare"],
+    benefici: [
+      "Sostiene la funzionalità del microcircolo",
+      "Favorisce la fisiologica circolazione venosa",
+      "Contribuisce al benessere del plesso emorroidario",
+      "Contrasta la sensazione di pesantezza delle gambe",
+      "Sostiene la regolare funzionalità dell'apparato cardiovascolare",
+      "Contribuisce alla protezione delle cellule dallo stress ossidativo grazie ai polifenoli della Vite rossa"
+    ],
+    beneficiNota:
+      "Il corretto funzionamento del microcircolo e della circolazione venosa rappresenta un elemento fondamentale per il benessere degli arti inferiori e per il fisiologico drenaggio dei liquidi.",
+    comeAgisce: [
+      { title: "Diosmina® micronizzata", text: "Flavonoide naturale ottenuto dagli agrumi, è uno degli attivi maggiormente studiati nell'ambito del supporto nutraceutico della funzionalità venosa. La micronizzazione — un processo brevettato — riduce la dimensione delle particelle e ne migliora la dispersione, favorendone la biodisponibilità. Rappresenta il fulcro della formulazione grazie all'ampia documentazione scientifica disponibile." },
+      { title: "Rusco (Ruscus aculeatus)", text: "Tradizionalmente utilizzato per sostenere la funzionalità della circolazione venosa. Contribuisce alla funzionalità del microcircolo (pesantezza delle gambe) e alla funzionalità della circolazione venosa, favorendo il benessere del plesso emorroidario." },
+      { title: "Ippocastano (Aesculus hippocastanum)", text: "Fonte naturale di escina, è impiegato per sostenere la fisiologica funzionalità del microcircolo e completare il supporto al sistema venoso." },
+      { title: "Vite rossa (Vitis vinifera)", text: "Ricca di polifenoli e proantocianidine, contribuisce alla funzionalità del microcircolo, alla regolare funzionalità dell'apparato cardiovascolare e svolge un'importante attività antiossidante." }
+    ],
+    sinergia: {
+      subtitle: "Una formulazione costruita per sinergia",
+      intro:
+        "FLEBOCARE nasce dall'associazione di ingredienti selezionati per agire in modo complementare sul benessere del sistema veno-linfatico.",
+      points: [
+        { title: "Diosmina® micronizzata", text: "ingrediente cardine della formulazione, ampiamente studiato per il supporto della funzionalità venosa" },
+        { title: "Rusco", text: "sostegno della circolazione venosa, del microcircolo e del benessere del plesso emorroidario" },
+        { title: "Ippocastano", text: "supporto della funzionalità del microcircolo" },
+        { title: "Vite rossa", text: "protezione antiossidante e sostegno del microcircolo e dell'apparato cardiovascolare" }
+      ],
+      outro:
+        "La formulazione è stata sviluppata da farmacisti con un approccio basato sulla sinergia tra gli attivi, privilegiando estratti titolati e standardizzati, materie prime selezionate e ingredienti supportati dalla letteratura scientifica."
+    },
+
+    ingredientiTabella: [
+      { nome: "Diosmina® micronizzata", quantita: "450 mg" },
+      { nome: "Rusco e.s.", quantita: "100 mg" },
+      { nome: "di cui ruscogenine", quantita: "10 mg" },
+      { nome: "Ippocastano e.s.", quantita: "100 mg" },
+      { nome: "di cui escina", quantita: "20 mg" },
+      { nome: "Vite rossa e.s.", quantita: "100 mg" },
+      { nome: "di cui polifenoli", quantita: "30 mg" }
+    ],
+    dosiRiferite: "Contenuti medi per compressa.",
+    modoUso:
+      "Si consiglia l'assunzione di 1-2 compresse al giorno, accompagnate da un bicchiere d'acqua.",
+    avvertenze:
+      "Non superare la dose giornaliera consigliata. Tenere fuori dalla portata dei bambini di età inferiore a 3 anni. Gli integratori alimentari non vanno intesi come sostituti di una dieta varia ed equilibrata e di uno stile di vita sano. Per l'uso in gravidanza e allattamento si consiglia di sentire il parere del farmacista o del medico. In caso di terapie farmacologiche in corso, in particolare con anticoagulanti, consultare il medico.",
+    conservazione:
+      "Conservare ben chiuso in luogo fresco e asciutto, al riparo dalla luce solare diretta e da fonti di calore. La data di fine validità si riferisce al prodotto correttamente conservato, in confezione integra.",
+    ingredientiCompleti:
+      "Diosmina® micronizzata; Rusco (Ruscus aculeatus L.) rizoma e.s.; Ippocastano (Aesculus hippocastanum L.) semi e.s. tit. in escina; Vite rossa (Vitis vinifera L.) foglie e.s. tit. in polifenoli; Agenti antiagglomeranti: acidi grassi, sali di magnesio degli acidi grassi, biossido di silicio. Gluten free · Lactose free · Adatto a vegetariani e vegani."
+  },
+
   {
     id: "magbis",
-    inArrivo: true,   // non ancora in vendita: mostra l'etichetta "in arrivo"
+    inArrivo: true,
     name: "MAGBIS",
     displayName: "Magbis",
     tagline: "Magnesio bisglicinato ad alta biodisponibilità",
     boxSubtitle: "INTEGRATORE ALIMENTARE DI MAGNESIO BISGLICINATO",
     boxClaim: "MAGNESIO AD ALTA BIODISPONIBILITÀ NELLA FORMA CHELATA CON GLICINA",
     shortIngredients: "Magnesio bisglicinato, chelato con glicina",
-    format: "60 capsule vegetali",   // ⚠ DA CONFERMARE — non indicato nel PDF
-    weight: "48 g",                  // ⚠ DA CONFERMARE — non indicato nel PDF
-    image: null,                     // ⟵ nessun mockup fotografico: il sito genera la scatola via CSS
+    // Verificare formato, dosaggi e ingredienti.
+    format: "60 capsule vegetali",
+    weight: "48 g",
+    price: "18,50",
+    image: null,
     cardImage: null,
     illustration: "mineral",
     theme: {
@@ -378,35 +529,36 @@ window.PRODUCTS = [
       outro:
         "Rispetto ad alcune forme inorganiche di magnesio, le forme chelate con aminoacidi vengono generalmente utilizzate per migliorare la gestione dell'apporto minerale e favorire una buona disponibilità del magnesio nell'organismo: una scelta adatta a un'integrazione continuativa."
     },
-    /* ⚠ Quantità DA CONFERMARE: il PDF non riporta dosaggi */
+
     ingredientiTabella: [
       { nome: "Magnesio bisglicinato", quantita: "1500 mg" },
       { nome: "di cui magnesio", quantita: "300 mg (80% VNR*)" }
     ],
-    dosiRiferite: "Contenuti medi per dose giornaliera (2 capsule) — *VNR: Valori Nutritivi di Riferimento.",   // ⚠ DA CONFERMARE
+    dosiRiferite: "Contenuti medi per dose giornaliera (2 capsule) — *VNR: Valori Nutritivi di Riferimento.",
     modoUso:
-      "Si consiglia l'assunzione di 2 capsule al giorno, accompagnate da un bicchiere d'acqua, preferibilmente durante o dopo i pasti.",   // ⚠ DA CONFERMARE
+      "Si consiglia l'assunzione di 2 capsule al giorno, accompagnate da un bicchiere d'acqua, preferibilmente durante o dopo i pasti.",
     avvertenze:
       "Non superare la dose giornaliera consigliata. Tenere fuori dalla portata dei bambini di età inferiore a 3 anni. Gli integratori alimentari non vanno intesi come sostituti di una dieta varia ed equilibrata e di uno stile di vita sano. Per l'uso in gravidanza e allattamento si consiglia di sentire il parere del farmacista o del medico.",
     conservazione:
       "Conservare ben chiuso in luogo fresco e asciutto, al riparo dalla luce solare diretta e da fonti di calore. La data di fine validità si riferisce al prodotto correttamente conservato, in confezione integra.",
     ingredientiCompleti:
-      "Magnesio bisglicinato; Agente di rivestimento (involucro capsula): cellulosa; Agenti antiagglomeranti: acidi grassi, sali di magnesio degli acidi grassi, biossido di silicio. Gluten free · Lactose free · Capsula vegetale, adatto a vegetariani e vegani."   // ⚠ DA CONFERMARE — lista completa non presente nel PDF
+      "Magnesio bisglicinato; Agente di rivestimento (involucro capsula): cellulosa; Agenti antiagglomeranti: acidi grassi, sali di magnesio degli acidi grassi, biossido di silicio. Gluten free · Lactose free · Capsula vegetale, adatto a vegetariani e vegani."
   },
 
-  /* ────────────────────────────────────────────── GLUTAGUT */
   {
     id: "glutagut",
-    inArrivo: true,   // non ancora in vendita: mostra l'etichetta "in arrivo"
+    inArrivo: true,
     name: "GLUTAGUT",
     displayName: "Glutagut",
     tagline: "Per la funzionalità della barriera intestinale",
     boxSubtitle: "INTEGRATORE ALIMENTARE A BASE DI L-GLUTAMMINA",
     boxClaim: "LA BASE STRUTTURALE DEL BENESSERE INTESTINALE",
     shortIngredients: "L-Glutammina",
-    format: "30 bustine",   // ⚠ DA CONFERMARE — non indicato nel PDF
-    weight: "165 g",        // ⚠ DA CONFERMARE — non indicato nel PDF
-    image: null,            // ⟵ nessun mockup fotografico: il sito genera la scatola via CSS
+    // Verificare formato, dosaggi e ingredienti.
+    format: "30 bustine",
+    weight: "165 g",
+    price: "18,50",
+    image: null,
     cardImage: null,
     illustration: "intestine",
     theme: {
@@ -446,189 +598,17 @@ window.PRODUCTS = [
       { title: "L-Glutammina e recupero muscolare", text: "Aminoacido coinvolto nei processi metabolici dell'organismo, utilizzato anche nell'ambito della nutrizione sportiva per supportare il recupero muscolare dopo l'attività fisica. Può rappresentare un valido supporto nei periodi di maggiore impegno fisico, quando aumenta il fabbisogno di nutrienti coinvolti nei processi di recupero." }
     ],
     ingredientiTabella: [
-      { nome: "L-Glutammina", quantita: "5000 mg" }   // ⚠ DA CONFERMARE — non indicato nel PDF
+      { nome: "L-Glutammina", quantita: "5000 mg" }
     ],
-    dosiRiferite: "Contenuti medi per dose giornaliera (1 bustina).",   // ⚠ DA CONFERMARE
+    dosiRiferite: "Contenuti medi per dose giornaliera (1 bustina).",
     modoUso:
-      "Si consiglia l'assunzione di 1 bustina al giorno, sciolta in un bicchiere d'acqua, preferibilmente lontano dai pasti.",   // ⚠ DA CONFERMARE
+      "Si consiglia l'assunzione di 1 bustina al giorno, sciolta in un bicchiere d'acqua, preferibilmente lontano dai pasti.",
     avvertenze:
       "Non superare la dose giornaliera consigliata. Tenere fuori dalla portata dei bambini di età inferiore a 3 anni. Gli integratori alimentari non vanno intesi come sostituti di una dieta varia ed equilibrata e di uno stile di vita sano. Non somministrare ai bambini al di sotto dei tre anni di età. Per l'uso in gravidanza e allattamento si consiglia di sentire il parere del farmacista o del medico.",
     conservazione:
       "Conservare ben chiuso in luogo fresco e asciutto, al riparo dalla luce solare diretta e da fonti di calore. La data di fine validità si riferisce al prodotto correttamente conservato, in confezione integra.",
     ingredientiCompleti:
-      "L-Glutammina. Gluten free · Lactose free · Adatto a vegetariani e vegani."   // ⚠ DA CONFERMARE — lista completa non presente nel PDF
-  },
-
-  /* ────────────────────────────────────────────── CIST-OFF */
-  {
-    id: "cist-off",
-    name: "CIST-OFF",
-    displayName: "Cist-off",
-    tagline: "Per la funzionalità delle vie urinarie",
-    boxSubtitle:
-      "INTEGRATORE ALIMENTARE CON D-MANNOSIO, CRANBERRY, PROPOLI E N-ACETILCISTEINA",
-    shortIngredients: "D-Mannosio, Cranberry, Propoli e N-Acetilcisteina",
-    format: "30 capsule vegetali",
-    weight: "19 g",
-    image: "assets/img/cistoffmockup.png",  // ⟵ foto reale del prodotto (sostituisce il mockup)
-    cardImage: null,      // ⟵ foto/illustrazione custom per la card
-    illustration: "berries",
-    theme: {
-      main: "#b94d75",    // colore principale (nome, bottoni, pannello)
-      dark: "#9e3c60",    // variante scura
-      cardBg: "#f4dfe4",  // sfondo card in home
-      soft: "#efdce0"     // sfondo tenue (schema anteprima)
-    },
-
-    /* ——— ANTEPRIMA (schema visivo) ——— */
-    zones: ["pelvi"],
-    zoneLabel: "Vie urinarie",
-    cosa:
-      "Una formula concentrata che unisce D-Mannosio, estratto di Cranberry, Propoli e N-Acetilcisteina per sostenere la funzionalità delle vie urinarie e il drenaggio dei liquidi corporei.",
-    perChi: [
-      { icon: "donna", label: "Donne soggette a episodi ricorrenti" },
-      { icon: "stress", label: "Nei periodi di maggiore vulnerabilità" },
-      { icon: "stagione", label: "Ai primi segnali di fastidio" },
-      { icon: "adulto", label: "Adulti che cercano un supporto naturale" }
-    ],
-    quando: ["Ai primi fastidi", "Come supporto nei cicli ricorrenti", "Dopo consiglio del farmacista"],
-
-    /* ——— SCHEDA PRODOTTO ——— */
-    descrizione:
-      "CIST-OFF è un integratore formulato per favorire la funzionalità delle vie urinarie e sostenere il fisiologico equilibrio dell'apparato urinario, grazie alla combinazione sinergica di D-Mannosio, Cranberry titolato in proantocianidine (PAC), N-Acetilcisteina e Propoli standardizzata in galangina. La formulazione nasce dall'integrazione di ingredienti selezionati per agire su aspetti complementari della fisiologia urinaria, associando componenti tradizionalmente utilizzati per il benessere delle vie urinarie con ingredienti innovativi come la N-Acetilcisteina.",
-    claimTriple: ["Drenaggio", "Benessere urinario", "Protezione"],
-    benefici: [
-      "Favorisce la funzionalità delle vie urinarie",
-      "Favorisce il drenaggio dei liquidi corporei",
-      "Sostiene il fisiologico equilibrio dell'ambiente urinario",
-      "Supporta le naturali difese antiossidanti dell'organismo",
-      "Contribuisce al benessere generale dell'apparato urinario"
-    ],
-    comeAgisce: [
-      { title: "D-Mannosio", text: "Zucchero semplice naturalmente presente in alcune specie vegetali, tra cui la betulla. È tradizionalmente utilizzato per il supporto della funzionalità delle vie urinarie ed è studiato per il suo ruolo nei meccanismi di adesione batterica, in particolare nei confronti di Escherichia coli." },
-      { title: "Cranberry", text: "Frutti e.s. titolato al 25% in proantocianidine (PAC), la frazione bioattiva del cranberry maggiormente studiata: la presenza di PAC standardizzate garantisce un apporto controllato dei principali composti caratterizzanti dell'estratto. Favorisce la funzionalità delle vie urinarie e il drenaggio dei liquidi corporei." },
-      { title: "N-Acetilcisteina (NAC)", text: "Derivato della cisteina e precursore del glutatione, uno dei principali sistemi antiossidanti dell'organismo. La sua presenza nella formulazione è finalizzata a sostenere le naturali difese antiossidanti ed è oggetto di studi nell'ambito dei processi correlati al biofilm." },
-      { title: "Propoli", text: "Resina e.s. titolata al 12% in galangina, estratto vegetale ricco in composti fenolici e flavonoidi. La standardizzazione in galangina permette di garantire un apporto costante di uno dei principali componenti bioattivi della propoli." }
-    ],
-    sinergia: {
-      subtitle: "Una formulazione costruita per sinergia",
-      intro:
-        "CIST-OFF non nasce dalla semplice associazione di ingredienti tradizionalmente utilizzati per il benessere urinario: ogni componente è stato selezionato per contribuire a un approccio integrato e complementare.",
-      points: [
-        { title: "D-Mannosio", text: "supporto ai meccanismi fisiologici legati all'adesione batterica" },
-        { title: "Cranberry titolato in PAC", text: "apporto di proantocianidine standardizzate, frazione caratterizzante del cranberry" },
-        { title: "NAC", text: "supporto ai sistemi antiossidanti endogeni, oggetto di studi sui processi correlati al biofilm" },
-        { title: "Propoli standardizzata in galangina", text: "apporto di composti fenolici e flavonoidi bioattivi" }
-      ],
-      outro:
-        "La formulazione è stata sviluppata da farmacisti con un approccio basato sulla sinergia tra gli attivi, privilegiando estratti standardizzati, titolazioni dichiarate e materie prime di elevata qualità."
-    },
-    ingredientiTabella: [
-      { nome: "D-Mannosio", quantita: "200 mg", max: "1200 mg" },
-      { nome: "Cranberry e.s.", quantita: "150 mg", max: "900 mg" },
-      { nome: "di cui proantocianidine", quantita: "37,5 mg", max: "225 mg" },
-      { nome: "N-acetilcisteina", quantita: "100 mg", max: "600 mg" },
-      { nome: "Propoli e.s.", quantita: "50 mg", max: "300 mg" },
-      { nome: "di cui galangina", quantita: "6 mg", max: "36 mg" }
-    ],
-    dosiRiferite: "Contenuti medi per dose giornaliera.",
-    doseCol1: "1 capsula",
-    doseColMax: "Dose max (6 cps)",
-    modoUso:
-      "Assumere le capsule con acqua. Si consiglia l'assunzione a vescica svuotata, preferibilmente dopo la minzione, per favorire la presenza degli attivi nell'ambiente urinario; è consigliato mantenere una buona idratazione durante la giornata. Dose di mantenimento: 1 capsula al giorno. Dose intensiva: fino a 6 capsule al giorno, secondo necessità e secondo le indicazioni riportate in etichetta.",
-    avvertenze:
-      "Non superare la dose giornaliera consigliata. Tenere fuori dalla portata dei bambini di età inferiore a 3 anni. Gli integratori alimentari non vanno intesi come sostituti di una dieta varia ed equilibrata e di uno stile di vita sano. Non somministrare ai bambini al di sotto dei tre anni di età. Per la presenza di propoli, il prodotto è sconsigliato in caso di ipersensibilità ai derivati apistici. Per l'uso in gravidanza e allattamento si consiglia di sentire il parere del farmacista o del medico.",
-    conservazione:
-      "Conservare ben chiuso in luogo fresco e asciutto, al riparo dalla luce solare diretta e da fonti di calore. La data di fine validità si riferisce al prodotto correttamente conservato, in confezione integra.",
-    ingredientiCompleti:
-      "D-Mannosio; Cranberry (Vaccinium macrocarpon Aiton) frutti e.s. tit. 25% in proantocianidine; N-acetilcisteina; Agente di rivestimento (involucro capsula): cellulosa; Propoli resina e.s. tit. 12% in galangina; Agenti antiagglomeranti: biossido di silicio, acidi grassi, sali di magnesio degli acidi grassi. Gluten free · Lactose free · Capsula vegetale, adatto a vegetariani."
-  },
-
-  /* ────────────────────────────────────────────── FLEBOCARE */
-  {
-    id: "flebocare",
-    name: "FLEBOCARE",
-    displayName: "Flebocare",
-    tagline: "Per la circolazione venosa e il microcircolo",
-    boxSubtitle:
-      "INTEGRATORE ALIMENTARE CON DIOSMINA MICRONIZZATA, RUSCO, IPPOCASTANO E VITE ROSSA",
-    boxClaim: "MICROCIRCOLO · FUNZIONALITÀ VENOSA · PROTEZIONE VASCOLARE",
-    shortIngredients: "Diosmina micronizzata, Rusco, Ippocastano e Vite rossa",
-    format: "30 compresse",   // ⚠ DA CONFERMARE — non indicato nel PDF
-    weight: "33 g",           // ⚠ DA CONFERMARE — non indicato nel PDF
-    image: null,              // ⟵ nessun mockup fotografico: il sito genera la scatola via CSS
-    cardImage: null,
-    illustration: "flow",
-    theme: {
-      main: "#367e75",
-      dark: "#2e6e66",
-      cardBg: "#dcf1eb",
-      soft: "#dbe9e4"
-    },
-
-    zones: ["gambe"],
-    zoneLabel: "Gambe e microcircolo",
-    cosa:
-      "Quattro attivi complementari — Diosmina micronizzata, Rusco, Ippocastano e Vite rossa — per sostenere la fisiologica funzionalità della circolazione venosa e del microcircolo, contribuendo al benessere degli arti inferiori e al mantenimento dell'integrità della parete vascolare.",
-    perChi: [
-      { icon: "donna", label: "Chi avverte pesantezza e gonfiore alle gambe" },
-      { icon: "lavoro", label: "Chi resta a lungo in piedi o seduto" },
-      { icon: "stagione", label: "Nei mesi caldi, quando il disagio aumenta" },
-      { icon: "adulto", label: "Adulti che vogliono sostenere il microcircolo" }
-    ],
-    quando: ["Sensazione di gambe pesanti", "Lunghe giornate in piedi o alla scrivania", "Cicli periodici nei mesi caldi"],
-
-    descrizione:
-      "FLEBOCARE è un integratore sviluppato per sostenere la fisiologica funzionalità della circolazione venosa e del microcircolo, contribuendo al benessere degli arti inferiori e al mantenimento dell'integrità della parete vascolare. Agisce grazie all'azione sinergica di Diosmina micronizzata, Rusco, Ippocastano e Vite rossa.",
-    claimTriple: ["Microcircolo", "Funzionalità venosa", "Protezione vascolare"],
-    benefici: [
-      "Sostiene la funzionalità del microcircolo",
-      "Favorisce la fisiologica circolazione venosa",
-      "Contribuisce al benessere del plesso emorroidario",
-      "Contrasta la sensazione di pesantezza delle gambe",
-      "Sostiene la regolare funzionalità dell'apparato cardiovascolare",
-      "Contribuisce alla protezione delle cellule dallo stress ossidativo grazie ai polifenoli della Vite rossa"
-    ],
-    beneficiNota:
-      "Il corretto funzionamento del microcircolo e della circolazione venosa rappresenta un elemento fondamentale per il benessere degli arti inferiori e per il fisiologico drenaggio dei liquidi.",
-    comeAgisce: [
-      { title: "Diosmina micronizzata", text: "Flavonoide naturale ottenuto dagli agrumi, è uno degli attivi maggiormente studiati nell'ambito del supporto nutraceutico della funzionalità venosa. La micronizzazione migliora la dispersione delle particelle, favorendone la biodisponibilità. Rappresenta il fulcro della formulazione grazie all'ampia documentazione scientifica disponibile." },
-      { title: "Rusco (Ruscus aculeatus)", text: "Tradizionalmente utilizzato per sostenere la funzionalità della circolazione venosa. Contribuisce alla funzionalità del microcircolo (pesantezza delle gambe) e alla funzionalità della circolazione venosa, favorendo il benessere del plesso emorroidario." },
-      { title: "Ippocastano (Aesculus hippocastanum)", text: "Fonte naturale di escina, è impiegato per sostenere la fisiologica funzionalità del microcircolo e completare il supporto al sistema venoso." },
-      { title: "Vite rossa (Vitis vinifera)", text: "Ricca di polifenoli e proantocianidine, contribuisce alla funzionalità del microcircolo, alla regolare funzionalità dell'apparato cardiovascolare e svolge un'importante attività antiossidante." }
-    ],
-    sinergia: {
-      subtitle: "Una formulazione costruita per sinergia",
-      intro:
-        "FLEBOCARE nasce dall'associazione di ingredienti selezionati per agire in modo complementare sul benessere del sistema veno-linfatico.",
-      points: [
-        { title: "Diosmina micronizzata", text: "ingrediente cardine della formulazione, ampiamente studiato per il supporto della funzionalità venosa" },
-        { title: "Rusco", text: "sostegno della circolazione venosa, del microcircolo e del benessere del plesso emorroidario" },
-        { title: "Ippocastano", text: "supporto della funzionalità del microcircolo" },
-        { title: "Vite rossa", text: "protezione antiossidante e sostegno del microcircolo e dell'apparato cardiovascolare" }
-      ],
-      outro:
-        "La formulazione è stata sviluppata da farmacisti con un approccio basato sulla sinergia tra gli attivi, privilegiando estratti titolati e standardizzati, materie prime selezionate e ingredienti supportati dalla letteratura scientifica."
-    },
-    /* ⚠ TUTTE le quantità qui sotto sono DA CONFERMARE: il PDF non riporta dosaggi */
-    ingredientiTabella: [
-      { nome: "Diosmina micronizzata", quantita: "450 mg" },
-      { nome: "Rusco e.s.", quantita: "100 mg" },
-      { nome: "di cui ruscogenine", quantita: "10 mg" },
-      { nome: "Ippocastano e.s.", quantita: "100 mg" },
-      { nome: "di cui escina", quantita: "20 mg" },
-      { nome: "Vite rossa e.s.", quantita: "100 mg" },
-      { nome: "di cui polifenoli", quantita: "30 mg" }
-    ],
-    dosiRiferite: "Contenuti medi per dose giornaliera (1 compressa).",   // ⚠ DA CONFERMARE
-    modoUso:
-      "Si consiglia l'assunzione di 1 compressa al giorno, accompagnata da un bicchiere d'acqua.",   // ⚠ DA CONFERMARE
-    avvertenze:
-      "Non superare la dose giornaliera consigliata. Tenere fuori dalla portata dei bambini di età inferiore a 3 anni. Gli integratori alimentari non vanno intesi come sostituti di una dieta varia ed equilibrata e di uno stile di vita sano. Per l'uso in gravidanza e allattamento si consiglia di sentire il parere del farmacista o del medico. In caso di terapie farmacologiche in corso, in particolare con anticoagulanti, consultare il medico.",
-    conservazione:
-      "Conservare ben chiuso in luogo fresco e asciutto, al riparo dalla luce solare diretta e da fonti di calore. La data di fine validità si riferisce al prodotto correttamente conservato, in confezione integra.",
-    ingredientiCompleti:
-      "Diosmina micronizzata; Rusco (Ruscus aculeatus L.) rizoma e.s.; Ippocastano (Aesculus hippocastanum L.) semi e.s. tit. in escina; Vite rossa (Vitis vinifera L.) foglie e.s. tit. in polifenoli; Agenti antiagglomeranti: acidi grassi, sali di magnesio degli acidi grassi, biossido di silicio. Gluten free · Lactose free · Adatto a vegetariani e vegani."   // ⚠ DA CONFERMARE — lista completa non presente nel PDF
+      "L-Glutammina. Gluten free · Lactose free · Adatto a vegetariani e vegani."
   }
 
 ];

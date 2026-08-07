@@ -1,14 +1,6 @@
-/* ============================================================
-   STILO LAB — ICONE SVG E SCHEMA CORPO
-   Qui stanno le icone piccole dell'anteprima e della fascia punti di
-   forza, e lo schema del corpo umano usato dalle schede prodotto.
 
-   NOTA: le illustrazioni grandi delle card in home (ILLUSTRATIONS)
-   sono state disattivate — le card mostrano la confezione del prodotto.
-   Codice, anteprima e istruzioni in _disattivati/illustrazioni-card/
-   ============================================================ */
 
-/* ————— Icone piccole per "PER CHI" (chips anteprima) ————— */
+
 window.PERCHI_ICONS = {
   donna: `<circle cx="12" cy="7" r="3.5"/><path d="M12 10.5 8 19h8l-4-8.5Z"/><path d="M9.5 19v2.5M14.5 19v2.5"/>`,
   uomo: `<circle cx="12" cy="6.5" r="3.5"/><path d="M8 21v-6a4 4 0 0 1 8 0v6"/>`,
@@ -20,9 +12,7 @@ window.PERCHI_ICONS = {
   stagione: `<circle cx="12" cy="12" r="4"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/>`,
   digestione: `<path d="M9 4v4a5 5 0 0 0 5 5h1a4 4 0 0 1 0 8h-4"/><path d="M13 4v3"/>`,
   alimentazione: `<path d="M7 3v7a2.5 2.5 0 0 0 5 0V3M9.5 3v18"/><path d="M16 3c2 2 3 5 3 8s-1.5 4-3 4v6"/>`,
-  /* avocado: la scorciatoia visiva più riconoscibile per le diete chetogeniche.
-     Serviva un disegno nuovo perché posate (alimentazione) e stomaco
-     (digestione) sono già usate nella stessa lista di detoxa. */
+
   dieta: `<path d="M12 21c-3.6 0-6.5-2.9-6.5-6.5 0-3.4 2.2-4.6 3.2-7.4C9.4 5 10.5 3 12 3s2.6 2 3.3 4.1c1 2.8 3.2 4 3.2 7.4 0 3.6-2.9 6.5-6.5 6.5Z"/><ellipse cx="12" cy="14.6" rx="2.8" ry="3.1"/>`,
   studio: `<path d="M3 7l9-4 9 4-9 4-9-4Z"/><path d="M7 9.5V15c0 1.5 2.5 3 5 3s5-1.5 5-3V9.5"/><path d="M21 7v6"/>`,
   notte: `<path d="M20 14A8.5 8.5 0 0 1 10 4a8 8 0 1 0 10 10Z"/><path d="M16 5h3M17.5 3.5v3" opacity=".7"/>`
@@ -33,11 +23,12 @@ window.perChiIcon = function (key, color) {
   return `<svg viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 };
 
-/* ————— Icone della fascia "punti di forza" in home ————— */
+
 window.FEATURE_ICONS = {
   formule: `<path d="M12 3c-4 3-6 7-6 11a6 6 0 0 0 12 0c0-4-2-8-6-11Z"/><path d="M12 8v9M9.5 12.5 12 15l2.5-2.5"/>`,
   ingredienti: `<path d="M18 4C10 5 5 10 5 17c0 1 .5 2 .5 2S7 20 9 20c7 0 10-6 9-16Z"/><path d="M6 19C9 13 13 9 17 6"/>`,
-  tollerabilita: `<path d="M8 4c-2 3-3 6-3 9a7 7 0 0 0 14 0c0-3-1-6-3-9"/><path d="M12 21v-6M9 12l3 3 3-3"/>`,
+
+  tollerabilita: `<path d="M12 21v-6.6"/><path d="M12 14.4c0-1.8 1.5-3.2 3.4-3.2 0 1.8-1.5 3.2-3.4 3.2Z"/><path d="M12 14.4c0-1.8-1.5-3.2-3.4-3.2 0 1.8 1.5 3.2 3.4 3.2Z"/><path d="M12 10.2c0-1.8 1.5-3.2 3.4-3.2 0 1.8-1.5 3.2-3.4 3.2Z"/><path d="M12 10.2c0-1.8-1.5-3.2-3.4-3.2 0 1.8 1.5 3.2 3.4 3.2Z"/><path d="M12 6.2c-1-1.1-1-2.6 0-3.7 1 1.1 1 2.6 0 3.7Z"/><path d="M3.5 20.5 20.5 3.5"/>`,
   qualita: `<path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z"/><path d="m9 11.5 2.2 2.2L15.5 9.5"/>`
 };
 
@@ -46,31 +37,15 @@ window.featureIcon = function (key, color) {
   return `<svg viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
 };
 
-/* ============================================================
-   SCHEMA CORPO UMANO — bodySchema(zones, color)
-   Evidenzia sulla figura le zone su cui agisce un prodotto:
-   testa, nervi, addome, pelvi, muscoli, gambe.
-   Usato dallo schema "Dove agisce" nelle schede prodotto e dalla
-   modale di anteprima.
 
-   NOTA: esisteva anche una versione interattiva, wellnessMap(), che
-   reggeva la "mappa del benessere" in home. È stata disattivata: il
-   codice sta in _disattivati/mappa-benessere/ insieme a ZONES_META e
-   alle coordinate delle zone toccabili.
-   ============================================================ */
 
-/* ————— Sfondo della figura —————
-   La figura umana NON è disegnata qui: è l'immagine assets/img/corpo.svg,
-   applicata come sfondo di .body-schema in css/style.css (così vale in un
-   colpo solo per home, anteprima e schede prodotto, e per cambiarla basta
-   sostituire il file). Qui resta solo l'alone colorato del prodotto, che sta
-   sotto la figura; i bagliori delle zone vengono disegnati sopra. */
+
 function bodySilhouette(color) {
   return `
     <ellipse cx="80" cy="152" rx="66" ry="142" fill="${color}" opacity=".05"/>`;
 }
 
-/* Glow sfumato + punto centrale + anelli pulsanti per una zona */
+
 function zoneGlow(zone, color, uid) {
   const gid = `wmg-${uid}-${zone}`;
   const grad = `
@@ -84,9 +59,7 @@ function zoneGlow(zone, color, uid) {
     <circle cx="${x}" cy="${y}" r="12" fill="none" stroke="${color}" stroke-width="1.6" class="wm-pulse wm-pulse-2"/>`;
   const core = (x, y) => `<circle cx="${x}" cy="${y}" r="4.5" fill="${color}"/>`;
 
-  /* Coordinate tarate sulla figura di assets/img/corpo.svg:
-     testa y16-50 · spalle y58-72 · braccia x≈49 e 111 · vita y≈96 ·
-     bacino y130-160 · inguine y≈162 · gambe x≈69 e 91, fino a y286 */
+
   switch (zone) {
     case "testa":
       return { grad, body: `<circle cx="80" cy="32" r="24" fill="url(#${gid})"/>${core(80, 32)}${pulse(80, 32)}` };

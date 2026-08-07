@@ -1,0 +1,124 @@
+/* Stili della modale d'anteprima — DISATTIVATA.
+   Tolti da css/style.css: per riattivarli reincollali lì dentro.
+   Attenzione: .preview-body-wrap, .perchi-*, .quando-list, .zone-tag e
+   .body-schema NON stanno qui perché le usano anche le schede prodotto.
+   ============================================================ */
+
+.preview-quando-title { margin-top: 18px; }
+
+.preview-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.preview-format { font-size: 13.5px; font-weight: 600; color: var(--muted); }
+
+
+.card-hint {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  /* variante scura come per il bottone della card: col colore principale
+     alcuni prodotti restano sotto soglia sul proprio fondo colorato */
+  color: var(--card-dark);
+  opacity: 0;
+  transition: opacity .2s;
+}
+/* piena opacità: a .85 il suggerimento restava sotto la soglia di leggibilità
+   su quasi tutte le card */
+.product-card:hover .card-hint { opacity: 1; }
+
+
+  .preview-overlay { padding: 12px; }
+  .preview-card { padding: 22px 18px 18px; }
+  /* la × era 18x30: area di tocco piena, senza spostare il glifo */
+  .preview-close { top: 6px; right: 8px; width: 44px; height: 44px; display: grid; place-items: center; }
+  .preview-head { gap: 14px; }
+  .preview-name { font-size: 27px; }
+  .preview-foot { justify-content: center; }
+  .preview-foot .btn { width: 100%; justify-content: center; }
+
+
+/* ————————————————————— ANTEPRIMA (MODALE) ————————————————————— */
+.preview-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(40, 35, 25, .45);
+  backdrop-filter: blur(3px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .22s;
+  overflow-y: auto;
+}
+.preview-overlay.open { opacity: 1; pointer-events: auto; }
+
+.preview-card {
+  background: var(--cream-soft);
+  border-radius: 18px;
+  max-width: 860px;
+  width: 100%;
+  padding: 30px 34px 26px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(40, 30, 15, .35);
+  transform: translateY(14px) scale(.98);
+  transition: transform .25s;
+  margin: auto;
+}
+.preview-overlay.open .preview-card { transform: none; }
+
+.preview-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+}
+.preview-close:hover { color: var(--ink); }
+
+.preview-head {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.preview-name {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--pv-main);
+}
+.preview-tagline { font-weight: 700; color: var(--ink); font-size: 15px; }
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 30px;
+  padding: 22px 0 8px;
+}
+
+.preview-col h4 {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+.pv-kicker { color: var(--pv-main); }
+.preview-cosa p { font-size: 15px; line-height: 1.65; }

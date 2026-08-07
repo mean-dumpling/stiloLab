@@ -1,20 +1,13 @@
-/* ============================================================
-   STILO LAB — FOGLIO DI STILE
-   Palette e font si cambiano qui sotto nelle variabili :root
-   ============================================================ */
+
 
 :root {
-  --cream: #f7eedd;          /* sfondo hero */
-  --cream-soft: #fdf9f1;     /* sfondo pagina */
-  --ink: #2d3826;            /* testo titoli */
-  --text: #4f4f42;           /* testo corrente */
-  /* Testo secondario: note, didascalie, avvertenze, dati minori.
-     Prima ogni blocco aveva il suo grigio a occhio (#9a9385, #b8b09c,
-     #938c7d…): erano fra 1,9:1 e 3,5:1 sulla crema, cioè sotto la soglia
-     di leggibilità. Ora ce n'è uno solo, tarato per stare sopra 5:1 anche sul
-     fondo peggiore, che non è la crema ma il pannello sinergia di magbis. */
+  --cream: #f4f4f2;
+  --cream-soft: #ffffff;
+  --ink: #2d3826;
+  --text: #4f4f42;
+
   --muted: #5d5850;
-  --green: #59811c;          /* verde brand */
+  --green: #59811c;
   --green-dark: #496c15;
   --line: #dfcca9;
   --white: #ffffff;
@@ -26,13 +19,16 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
 
+  overscroll-behavior-x: none;
+}
 body {
+
+  overflow-x: clip;
   font-family: var(--font-sans);
-  /* Quicksand è un carattere tondo e leggero: a 400 le aste sono troppo
-     sottili e su schermi poco contrastati il testo sbiadisce. 500 è il peso
-     giusto per il testo corrente, i titoli hanno comunque il loro. */
+
   font-weight: 500;
   color: var(--text);
   background: var(--cream-soft);
@@ -46,7 +42,7 @@ ul { list-style: none; }
 
 .container { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
 
-/* ————————————————————— HEADER ————————————————————— */
+
 .site-header {
   background: var(--white);
   border-bottom: 1px solid var(--line);
@@ -73,9 +69,7 @@ ul { list-style: none; }
   font-weight: 600;
 }
 .logo-main em { font-style: normal; color: var(--green); }
-/* Sotto il logo c'era la riga "FARMACIA STILO" (.logo-sub): tolta da tutte le
-   pagine. I riferimenti alla farmacia restano dove hanno un contenuto — chi
-   siamo, contatti, footer, titoli delle pagine. */
+
 
 .nav { display: flex; gap: 24px; align-items: center; }
 .nav a {
@@ -91,10 +85,7 @@ ul { list-style: none; }
 .nav a:hover { color: var(--green); }
 .nav a.active { color: var(--green); border-color: var(--green); }
 
-/* ——— Selettore di lingua ———————————————————————————————————————
-   Due sigle nell'header, sempre nell'ordine IT / EN: la lingua corrente è
-   marcata, l'altra è un link alla stessa pagina nell'altra lingua. Nessun
-   popup e nessuna scelta imposta all'arrivo: l'italiano è il default. */
+
 .lang-switch {
   display: flex;
   align-items: center;
@@ -113,6 +104,24 @@ ul { list-style: none; }
   font-weight: 400;
 }
 
+
+.header-wa {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #03813a;
+  color: var(--white);
+  transition: background .2s, transform .15s;
+}
+.header-wa svg { width: 21px; height: 21px; }
+.header-wa:hover { background: #026b30; }
+.header-wa:active { transform: scale(.94); }
+
+.header-wa.is-off { display: none; }
+
 .nav-burger {
   display: none;
   background: none;
@@ -124,18 +133,16 @@ ul { list-style: none; }
   cursor: pointer;
 }
 
-/* ————————————————————— HERO ————————————————————— */
+
 .hero {
   background:
-    radial-gradient(circle at 78% 42%, #f3e2cc 0%, transparent 34%),
+    radial-gradient(circle at 78% 42%, #ededea 0%, transparent 34%),
     var(--cream);
   overflow: hidden;
   position: relative;
 }
 
-/* Una colonna sola da quando lo scaffale di mockup non c'è più
-   (_disattivati/scaffale-hero/): il testo non deve stirarsi per tutta
-   la larghezza, quindi il blocco resta contenuto. */
+
 .hero-inner {
   display: grid;
   grid-template-columns: 1fr;
@@ -168,12 +175,7 @@ ul { list-style: none; }
 
 .hero-text { max-width: 420px; margin-bottom: 34px; }
 
-/* ——— SFONDO HERO TEMPORANEO (prova) ——————————————————————————
-   La foto occupa la metà destra del banner, a filo dei bordi, e sfuma nella
-   crema sul lato che guarda il testo: non è a tutto schermo, ma nemmeno una
-   card staccata. Il testo resta sulla parte piena a sinistra.
-   PER RIMUOVERLO: cancella questo blocco e il div .hero-bg-panel in index.html
-   (e, se non serve più, assets/img/hero-sfondo-prova.jpg). */
+
 .hero-bg-panel {
   position: absolute; top: 0; right: 0; bottom: 0;
   width: 56%; overflow: hidden; z-index: 0;
@@ -184,32 +186,22 @@ ul { list-style: none; }
 }
 .hero-bg-panel::after {
   content: ""; position: absolute; inset: 0;
-  /* Sfuma solo il bordo che guarda il testo, poi lascia la foto pulita.
-     Qui il testo sta fuori dal pannello, quindi il velo può aprirsi presto. */
-  background: linear-gradient(90deg, #f7eedd 0%, rgba(247,238,221,.85) 8%, rgba(247,238,221,.32) 24%, rgba(247,238,221,0) 44%);
+
+  background: linear-gradient(90deg, #f4f4f2 0%, rgba(244,244,242,.85) 8%, rgba(244,244,242,.32) 24%, rgba(244,244,242,0) 44%);
 }
 @media (max-width: 900px) {
-  /* Il pannello laterale vale solo da desktop. Qui le colonne si impilano e
-     la resa migliore è la foto che copre tutto il banner sfumando dall'alto,
-     dove sta il testo: è la versione provata per prima, e su telefono era
-     quella giusta. Ritaglio al centro, come allora. */
+
   .hero-bg-panel { width: 100%; top: 0; height: auto; }
   .hero-bg-panel img { object-position: center center; }
   .hero-bg-panel::after {
-    /* Qui il testo sta SOPRA la foto, quindi un po' di velo serve. Invece di
-       coprire tutto, l'alone (primo layer) si concentra dietro al paragrafo,
-       dove la foto ha una zona scura di aghi che mangerebbe il testo. Il
-       secondo layer è una sfumatura leggera che raccorda il bordo con l'header.
-       Dalla metà in giù la foto resta praticamente pulita. */
+
     background:
-      radial-gradient(110% 34% at 50% 43%, rgba(247,238,221,.84) 0%, rgba(247,238,221,.7) 45%, rgba(247,238,221,0) 100%),
-      linear-gradient(180deg, rgba(247,238,221,.62) 0%, rgba(247,238,221,.3) 26%, rgba(247,238,221,.1) 60%, rgba(247,238,221,0) 100%);
+      radial-gradient(110% 34% at 50% 43%, rgba(244,244,242,.84) 0%, rgba(244,244,242,.7) 45%, rgba(244,244,242,0) 100%),
+      linear-gradient(180deg, rgba(244,244,242,.62) 0%, rgba(244,244,242,.3) 26%, rgba(244,244,242,.1) 60%, rgba(244,244,242,0) 100%);
   }
 }
 
-/* Contenitore per decorazioni sovrapposte all'hero. I fiori vettoriali che
-   stavano qui sono stati tolti: la regola resta perché la usa _candidati.html
-   per provare i decori sul banner. */
+
 .hero-flowers {
   position: absolute;
   inset: 0;
@@ -218,7 +210,7 @@ ul { list-style: none; }
 }
 .hero-flowers svg { position: absolute; }
 
-/* ————————————————————— BOTTONI ————————————————————— */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -256,7 +248,7 @@ ul { list-style: none; }
 }
 .btn-outline:hover { background: var(--btn-color); color: #fff; }
 
-/* ————————————————————— SCAFFALE HERO ————————————————————— */
+
 .hero-shelf { text-align: center; }
 
 .shelf-boxes {
@@ -267,7 +259,7 @@ ul { list-style: none; }
   padding: 0 10px;
   flex-wrap: wrap;
 }
-/* i mockup non si comprimono mai: se non entrano, il ripiano va a capo */
+
 .shelf-boxes .box-mockup { flex: 0 0 auto; }
 
 .shelf-row + .shelf-row { margin-top: 30px; }
@@ -282,8 +274,7 @@ ul { list-style: none; }
   box-shadow: 0 18px 30px rgba(120, 90, 50, .18);
 }
 
-/* ————————————————————— MOCKUP SCATOLA —————————————————————
-   Generata via CSS dai dati; sostituibile con una foto (image:)  */
+
 .box-mockup {
   --box-color: #888;
   --box-dark: #666;
@@ -307,10 +298,10 @@ ul { list-style: none; }
   width: 12px;
   background: linear-gradient(to right, rgba(0,0,0,.16), rgba(0,0,0,.05));
   border-radius: 3px 0 0 3px;
-  background-color: #f3efe8;
+  background-color: #f1f1ef;
 }
 
-/* dimensioni */
+
 .box-xs .box-front { width: 74px;  height: 108px; }
 .box-sm .box-front { width: 108px; height: 158px; }
 .box-md .box-front { width: 150px; height: 218px; }
@@ -319,12 +310,7 @@ ul { list-style: none; }
 .box-sm .box-side { width: 8px; }
 .box-lg .box-side { width: 16px; }
 
-/* ——— Segnaposto "in arrivo" —————————————————————————————————————
-   Per i prodotti non ancora in vendita non c'è una confezione da mostrare:
-   al suo posto va la scritta in diagonale. Riusa le misure di .box-front,
-   così occupa lo stesso spazio del mockup e le griglie non si spostano.
-   Lo genera renderMockup in js/site.js quando il prodotto ha inArrivo:true;
-   nelle schede statiche il blocco è scritto direttamente nella pagina. */
+
 .box-arrivo { filter: none; }
 .box-arrivo:hover { transform: none; }
 .box-arrivo .box-front {
@@ -335,9 +321,7 @@ ul { list-style: none; }
   justify-content: center;
 }
 .box-arrivo span {
-  /* Riga sola, non due: spezzata in "In" + "arrivo" le due righe hanno
-     larghezze molto diverse e, ruotate, formano un cuneo che si legge come
-     storto anche quando è centrato al pixel. */
+
   transform: rotate(-45deg);
   font-weight: 700;
   text-transform: uppercase;
@@ -347,16 +331,13 @@ ul { list-style: none; }
   font-size: 20px;
   letter-spacing: 1px;
 }
-/* Misure tarate sulla diagonale di ciascun formato lasciando margine dai bordi */
+
 .box-arrivo.box-xs span { font-size: 13px; letter-spacing: .65px; }
 .box-arrivo.box-md span { font-size: 28px; letter-spacing: 1.4px; }
 .box-arrivo.box-lg span { font-size: 42px; letter-spacing: 2.1px; }
-/* "Coming soon" è più lungo di "In arrivo" e sulla stessa diagonale non ci
-   sta: nel sito inglese la scritta scende di un quarto. Nessuno vede le due
-   lingue affiancate, quindi la differenza non si nota. */
+
 html[lang="en"] .box-arrivo span { font-size: 15px; letter-spacing: .75px; }
-/* nel formato più piccolo l'inglese rinuncia alla spaziatura fra lettere:
-   serve tutta per non scendere sotto una misura leggibile */
+
 html[lang="en"] .box-arrivo.box-xs span { font-size: 10.5px; letter-spacing: 0; }
 html[lang="en"] .box-arrivo.box-md span { font-size: 21px; letter-spacing: 1.05px; }
 html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55px; }
@@ -377,8 +358,7 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
 .box-lg .box-name { font-size: 25px; }
 .box-sm .box-name { font-size: 12px; }
 .box-xs .box-name { font-size: 9px; }
-/* Le scritte minute del mockup restano a 400: qui non è testo da leggere ma
-   il disegno di una confezione stampata, e ingrossarle la impasterebbe. */
+
 .box-brand-sm, .box-format {
   font-weight: 400;
 }
@@ -449,14 +429,19 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
 .box-md .box-format { font-size: 6.5px; }
 .box-lg .box-format { font-size: 8.5px; }
 
-/* mockup sostituito da foto reale */
-.box-photo img { object-fit: contain; }
+
+
+.box-photo img {
+  object-fit: contain;
+
+  max-width: none;
+}
 .box-photo.box-xs img { width: 80px;  height: 114px; }
 .box-photo.box-sm img { width: 116px; height: 164px; }
 .box-photo.box-md img { width: 162px; height: 226px; }
 .box-photo.box-lg img { width: 236px; height: 330px; }
 
-/* ————————————————————— SEZIONE FORMULE ————————————————————— */
+
 .formules { padding: 74px 0 30px; text-align: center; }
 
 .section-leaf { color: var(--green); width: 26px; margin: 0 auto 10px; }
@@ -479,7 +464,11 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
   padding: 0 28px;
 }
 
+
 .product-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
   background: var(--card-bg, #f6f6f2);
   border-radius: var(--radius);
   padding: 30px 26px 26px;
@@ -520,24 +509,23 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
 }
 .card-ingredients { font-size: 14.5px; margin-bottom: 20px; }
 
-.card-hint {
-  position: absolute;
-  top: 16px;
-  right: 18px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .5px;
-  /* variante scura come per il bottone della card: col colore principale
-     alcuni prodotti restano sotto soglia sul proprio fondo colorato */
-  color: var(--card-dark);
-  opacity: 0;
-  transition: opacity .2s;
-}
-/* piena opacità: a .85 il suggerimento restava sotto la soglia di leggibilità
-   su quasi tutte le card */
-.product-card:hover .card-hint { opacity: 1; }
 
-/* ————————————————————— PUNTI DI FORZA ————————————————————— */
+.card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.card-prezzo {
+  font-family: var(--font-serif);
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+
 .features-wrap { padding: 40px 28px 80px; max-width: var(--maxw); margin: 0 auto; }
 
 .features-strip {
@@ -574,7 +562,7 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
 }
 .feature p { font-size: 14.5px; line-height: 1.55; }
 
-/* ————————————————————— FOOTER ————————————————————— */
+
 .site-footer {
   background: var(--white);
   border-top: 1px solid var(--line);
@@ -600,83 +588,6 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
 .footer-links a:hover { color: var(--green); }
 .footer-links a + a { border-left: 1px solid var(--line); }
 
-/* ————————————————————— ANTEPRIMA (MODALE) ————————————————————— */
-.preview-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(40, 35, 25, .45);
-  backdrop-filter: blur(3px);
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  z-index: 100;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .22s;
-  overflow-y: auto;
-}
-.preview-overlay.open { opacity: 1; pointer-events: auto; }
-
-.preview-card {
-  background: var(--cream-soft);
-  border-radius: 18px;
-  max-width: 860px;
-  width: 100%;
-  padding: 30px 34px 26px;
-  position: relative;
-  box-shadow: 0 30px 80px rgba(40, 30, 15, .35);
-  transform: translateY(14px) scale(.98);
-  transition: transform .25s;
-  margin: auto;
-}
-.preview-overlay.open .preview-card { transform: none; }
-
-.preview-close {
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  background: none;
-  border: none;
-  font-size: 30px;
-  line-height: 1;
-  color: var(--muted);
-  cursor: pointer;
-}
-.preview-close:hover { color: var(--ink); }
-
-.preview-head {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--line);
-}
-.preview-name {
-  font-family: var(--font-serif);
-  font-size: 36px;
-  font-weight: 600;
-  color: var(--pv-main);
-}
-.preview-tagline { font-weight: 700; color: var(--ink); font-size: 15px; }
-
-.preview-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 30px;
-  padding: 22px 0 8px;
-}
-
-.preview-col h4 {
-  font-size: 13px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--ink);
-  margin-bottom: 12px;
-  font-weight: 700;
-}
-.pv-kicker { color: var(--pv-main); }
-.preview-cosa p { font-size: 15px; line-height: 1.65; }
-
 .preview-body-wrap {
   margin-top: 16px;
   background: var(--pv-bg, #f4f0e6);
@@ -687,13 +598,7 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
   align-items: center;
   gap: 10px;
 }
-/* ——— Figura della mappa del benessere ———————————————————————————
-   La sagoma umana è l'immagine  assets/img/corpo.svg , messa come sfondo del
-   riquadro: sopra ci vanno i bagliori delle zone, disegnati in SVG.
-   Per cambiare figura basta sostituire quel file, mantenendo il riquadro
-   160×300 con la figura di fronte, centrata, testa in alto e piedi in basso
-   (è su quelle proporzioni che sono tarate le zone in js/illustrations.js).
-   Vale in un colpo solo per home, anteprima e schede prodotto. */
+
 .body-schema {
   height: 230px;
   background: url("../assets/img/corpo.svg") center / contain no-repeat;
@@ -702,7 +607,7 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
 .zone-on { opacity: 1; }
 .zone-off { opacity: 0; }
 
-/* Mappa del benessere: anelli pulsanti attorno alla zona attiva */
+
 .wm-pulse {
   transform-box: fill-box;
   transform-origin: center;
@@ -759,7 +664,6 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
 }
 .perchi-ico svg { width: 18px; height: 18px; }
 
-.preview-quando-title { margin-top: 18px; }
 .quando-list { display: flex; flex-direction: column; gap: 6px; }
 .quando-list li {
   font-size: 14.5px;
@@ -777,18 +681,7 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
   background: var(--dot, var(--green));
 }
 
-.preview-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-  flex-wrap: wrap;
-}
-.preview-format { font-size: 13.5px; font-weight: 600; color: var(--muted); }
 
-/* ————————————————————— SCHEDA PRODOTTO ————————————————————— */
 .scheda-hero {
   background:
     radial-gradient(circle at 22% 40%, var(--p-soft) 0%, transparent 45%),
@@ -824,78 +717,68 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
 
 .scheda-meta { display: flex; gap: 10px; margin: 22px 0 26px; flex-wrap: wrap; }
 
-/* I due richiami della scheda: anteprima (principale) e acquisto (secondario) */
+
 .scheda-cta { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px 18px; }
 
-/* ——— Blocco acquisto ———————————————————————————————————————————
-   Due strade diverse: su Amazon non si compra ancora (l'avviso "Disponibile a
-   breve" sta sopra quel tasto e vale solo per lui), su WhatsApp sì.
-   Per TOGLIERE l'avviso quando il prodotto arriva su Amazon, cancella lo span
-   .acquisto-nota dalla pagina del prodotto. */
-.acquisto { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; }
-/* L'avviso è un'etichetta agganciata al tasto Amazon, non un titolo sopra al
-   gruppo: sta appena sopra quel tasto e larga quanto basta al testo, allineata
-   al suo bordo sinistro. Così si vede che riguarda lui e non l'acquisto in
-   generale — tanto più che il tasto WhatsApp accanto è pieno e attivo.
-   Sta nel flusso e non in posizione assoluta: lo spazio se lo prende da sola,
-   e non serve accordare a mano il distacco fra le righe dei richiami. I due
-   tasti restano comunque appaiati grazie ad align-items:flex-end su .acquisto.
-   È fuori dal tasto — accanto nel codice, non dentro — perché il tasto è
-   spento al 45% e l'etichetta invece deve restare leggibile. */
-.acquisto-amazon {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  /* nessuno stacco: l'etichetta appoggia sul bordo del tasto */
-  gap: 0;
-}
-.acquisto-nota {
-  background: var(--white);
-  border: 1.5px solid var(--p-dark, var(--line));
-  color: var(--p-dark, var(--muted));
-  border-radius: 100px;
-  padding: 2px 10px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  white-space: nowrap;
-  line-height: 1.5;
+
+.acquisto { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 16px; }
+
+.prezzo {
+
+  flex: 0 0 100%;
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--p-dark, var(--ink));
 }
 
-/* Tasti d'acquisto: piccoli, non devono rubare la scena all'anteprima.
-   Finché hanno l'attributo data-da-configurare restano spenti e non
-   cliccabili: per accenderli metti l'indirizzo in href e togli l'attributo. */
-.btn-amazon, .btn-compra-wa {
+.acquisto-arrivo {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1.5px dashed var(--p-main, var(--line));
+  border-radius: 8px;
+  padding: 13px 20px;
+}
+
+.acquisto-nota {
+  padding-bottom: 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+
+.btn-compra-wa {
   font-size: 12.5px;
   padding: 10px 16px;
   gap: 8px;
-  background: var(--white);
-  color: var(--text);
-  border: 1.5px solid var(--line);
 }
-.btn-amazon svg, .btn-compra-wa svg { width: 15px; height: 15px; flex: 0 0 auto; }
-.btn-amazon:hover {
-  border-color: var(--p-dark, var(--green));
-  color: var(--p-dark, var(--green));
+.btn-compra-wa svg { width: 15px; height: 15px; flex: 0 0 auto; }
+
+.btn-compra-wa .wa-etichetta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
 }
-/* WhatsApp è già attivo, quindi è pieno e non solo contornato: è l'unico dei
-   due da cui si compra davvero, e si deve vedere.
-   Il verde è la tonalità di WhatsApp portata alla massima saturazione che
-   ancora regge il testo bianco — più chiaro di così il bianco non si legge
-   (il verde del logo, #25d366, sta a 1,98 contro i 4,5 richiesti). */
+.btn-compra-wa .wa-etichetta small { font-size: 11px; letter-spacing: .4px; opacity: .92; }
+
 .btn-compra-wa {
   background: #03813a;
   border-color: #03813a;
   color: var(--white);
 }
 .btn-compra-wa:hover { background: #026b30; border-color: #026b30; color: var(--white); }
-.btn-amazon[data-da-configurare] { opacity: .45; pointer-events: none; }
-/* spento finché il numero non è configurato in SITE.whatsapp */
+
 .btn-compra-wa.is-off { opacity: .45; pointer-events: none; }
 
-/* L'etichetta "in arrivo" era una pastiglia piccola accanto al nome: ora la
-   scritta sta in diagonale al posto della confezione, vedi .box-arrivo. */
+
 .meta-pill {
   background: var(--white);
   border: 1px solid var(--line);
@@ -906,8 +789,7 @@ html[lang="en"] .box-arrivo.box-lg span { font-size: 31px; letter-spacing: 1.55p
   padding: 6px 16px;
   letter-spacing: .3px;
 }
-/* il tag "senza glutine e lattosio" è un link alla guida: deve restare
-   identico agli altri tag, solo con un accenno di interattività */
+
 a.meta-pill { text-decoration: none; transition: border-color .2s, background .2s; }
 a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
 
@@ -918,8 +800,7 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
   gap: 48px;
   align-items: start;
 }
-/* senza questo le colonne non scendono sotto la larghezza del loro contenuto
-   e su mobile spingono fuori la pagina invece di lasciar scorrere le tabelle */
+
 .scheda-cols > *, .scheda-hero-inner > * { min-width: 0; }
 
 .section-title-sm {
@@ -946,50 +827,29 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
 .agisce-item h4 { font-size: 15px; margin-bottom: 6px; }
 .agisce-item p { font-size: 14.5px; line-height: 1.55; }
 
-/* ——— Immagine dell'ingrediente ———————————————————————————————
-   Tre trattamenti, perché le fonti sono di natura diversa:
-   .ing-foto     fotografie → riempiono il riquadro. Oggi è il caso di tutti
-                 gli ingredienti di cui esiste una foto: 15 su 24.
-   .ing-tavola   tavole d'erbario → riempiono anch'esse, ma con il taglio
-                 spostato in alto, dove in quelle incisioni sta il soggetto.
-                 Al momento nessuna immagine la usa: resta pronta se in futuro
-                 si rimette una tavola al posto di una foto.
-   .ing-formula  formule di struttura e modelli molecolari → unici a restare
-                 interi (contain): una formula tagliata non si legge più.
-   L'immagine esce dal padding della card con margini negativi. */
+
 .agisce-item .ing-foto,
 .agisce-item .ing-tavola,
 .agisce-item .ing-formula {
   display: block;
   width: calc(100% + 40px);
-  max-width: none;           /* scavalca la regola globale img{max-width:100%} */
+  max-width: none;
   margin: -18px -20px 14px;
 }
-/* Le formule restano a riquadro fisso: sono disegni su fondo chiaro,
-   non c'è un soggetto da inquadrare. */
+
 .agisce-item .ing-formula { height: 148px; }
-/* Le FOTO invece hanno un riquadro a proporzione fissa, non ad altezza fissa.
-   Con l'altezza bloccata a 148px la proporzione del ritaglio dipendeva dalla
-   larghezza della card, che passa da 253 a 439px secondo quante colonne
-   entrano nella griglia: il riquadro andava da 1,71 a 2,97, e delle foto
-   verticali restava visibile fra il 19% e il 44% dell'altezza — una fettina
-   che prendeva il gambo invece della pianta. Con la proporzione fissa il
-   taglio è identico su qualsiasi schermo. */
+
 .agisce-item .ing-foto,
 .agisce-item .ing-tavola { aspect-ratio: 16 / 9; }
 .agisce-item .ing-foto { object-fit: cover; }
 
-/* ——— Punto d'inquadratura, foto per foto ———————————————————————
-   Sulle verticali il centro geometrico cade sul gambo o sul terreno: qui si
-   sposta il taglio su dove sta davvero il soggetto. Le percentuali non sono
-   la posizione del soggetto ma il valore di object-position che ce lo porta
-   al centro, calcolato sulla proporzione del riquadro. */
-.ing-foto[src$="curcuma.jpg"]       { object-position: center 38%; }  /* rizomi in alto */
-.ing-foto[src$="cardo-mariano.jpg"] { object-position: center 25%; }  /* capolino */
-.ing-foto[src$="carciofo.jpg"]      { object-position: center 21%; }  /* il capolino */
-.ing-foto[src$="fumaria.jpg"]       { object-position: center 19%; }  /* spiga di fiori */
-.ing-foto[src$="propoli.jpg"]       { object-position: center 59%; }  /* etichetta e granuli */
-.ing-foto[src$="rusco.jpg"]         { object-position: center 36%; }  /* le bacche rosse */
+
+.ing-foto[src$="curcuma.webp"]       { object-position: center 38%; }
+.ing-foto[src$="cardo-mariano.webp"] { object-position: center 25%; }
+.ing-foto[src$="carciofo.webp"]      { object-position: center 21%; }
+.ing-foto[src$="fumaria.webp"]       { object-position: center 19%; }
+.ing-foto[src$="propoli.webp"]       { object-position: center 59%; }
+.ing-foto[src$="rusco.webp"]         { object-position: center 36%; }
 .agisce-item .ing-tavola {
   object-fit: cover;
   object-position: center 30%;
@@ -1024,7 +884,7 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
 .ingredienti-table td {
   padding: 11px 18px;
   font-size: 15px;
-  border-top: 1px solid #f1ece1;
+  border-top: 1px solid #eeeeec;
 }
 .ingredienti-table td:last-child { font-weight: 700; color: var(--ink); white-space: nowrap; }
 .table-note { font-size: 13px; margin-top: 8px; color: var(--muted); }
@@ -1032,16 +892,16 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
 .scheda-text { font-size: 15.5px; max-width: 660px; }
 .avvertenze { font-size: 14px; color: var(--muted); }
 
-/* Tabella a due dosi: evidenzia la dose consigliata, dose max come dato secondario */
+
 .ingredienti-table.has-max td:nth-child(2) { font-weight: 700; color: var(--ink); }
 .ingredienti-table.has-max td:last-child { font-weight: 500; color: var(--muted); }
 
-/* Blocco "Informazioni in etichetta": fine pagina, richiudibile, poco invadente */
+
 .label-info {
   margin: 44px 0 4px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: #faf8f3;
+  background: #f9f9f8;
 }
 .label-info summary {
   list-style: none;
@@ -1130,7 +990,7 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
 }
 .mini-card span { font-size: 13.5px; color: var(--ink); line-height: 1.4; display: block; }
 
-/* ————————————————————— PAGINE DI CONTENUTO ————————————————————— */
+
 .page-hero {
   background: var(--cream);
   text-align: center;
@@ -1153,10 +1013,21 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
   margin: 38px 0 14px;
 }
 .page-body h2:first-child { margin-top: 0; }
-/* una sezione dentro una pagina di testo stacca più di un semplice titolo:
-   il margine dell'h2 (38px) da solo non basta a farla leggere come blocco a sé */
+
 .page-body > section { margin-top: 76px; }
 .page-body > section > h2:first-child { margin-top: 0; }
+
+
+.page-body > section::before,
+.page-body > h2:not(:first-child)::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: var(--line);
+  margin-bottom: 40px;
+}
+
+.page-body > h2:not(:first-child) { margin-top: 64px; }
 .page-body p + p { margin-top: 12px; }
 .page-body ul { list-style: disc; padding-left: 22px; margin: 12px 0; }
 .page-body li + li { margin-top: 6px; }
@@ -1176,7 +1047,7 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
 .value-card h3 { color: var(--green-dark); font-size: 17px; margin-bottom: 8px; }
 .value-card p { font-size: 15px; }
 
-/* form contatti */
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1.2fr .8fr;
@@ -1199,7 +1070,7 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
 .contact-form input:focus,
 .contact-form textarea:focus { outline: 2px solid var(--green); border-color: transparent; }
 
-/* ——— Fascia "contattaci" in fondo alla home ——— */
+
 .cta {
   background: var(--cream);
   padding: 58px 28px 64px;
@@ -1214,17 +1085,17 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
   margin: 0 auto 24px;
 }
 
-/* ——— Tasto WhatsApp ——— */
+
 .btn-wa { margin-top: 12px; }
 .btn-wa svg { width: 18px; height: 18px; flex: 0 0 auto; }
-/* spento finché il numero non è configurato in SITE.whatsapp */
+
 .btn-wa.is-off { opacity: .45; cursor: not-allowed; pointer-events: none; }
 
 .contact-info { display: flex; flex-direction: column; gap: 14px; }
 .contact-info .aside-card h3 { color: var(--green-dark); }
 .contact-info .aside-card p { font-size: 15px; }
 
-/* glossario ingredienti */
+
 .gloss-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1251,7 +1122,7 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
 }
 .gloss-card p { font-size: 14.5px; }
 
-/* ————————————————————— BADGE HERO ————————————————————— */
+
 .hero-badges {
   display: flex;
   gap: 10px;
@@ -1278,8 +1149,7 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
   background: var(--green);
   flex: 0 0 auto;
 }
-/* Badge che porta alla guida: il padding passa al link, così l'area
-   cliccabile copre tutta la pastiglia e non solo le lettere. */
+
 .hero-badges li.badge-link { padding-right: 0; }
 .hero-badges li.badge-link > a {
   display: inline-flex;
@@ -1294,10 +1164,9 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
   background: rgba(255, 255, 255, .92);
 }
 
-/* Gli stili della "mappa del benessere" stavano qui: disattivata,
-   si trovano in _disattivati/mappa-benessere/mappa.css */
 
-/* ————————————————————— IL NOSTRO APPROCCIO ————————————————————— */
+
+
 .approach { padding: 78px 28px; }
 .approach-inner { max-width: var(--maxw); margin: 0 auto; text-align: center; }
 .approach-intro { max-width: 720px; margin: 14px auto 0; }
@@ -1333,7 +1202,7 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
 .approach-step h3 { font-size: 15px; color: var(--ink); margin-bottom: 6px; }
 .approach-step p { font-size: 14px; line-height: 1.55; }
 
-/* ————————————————————— SCHEDA: BENEFICI ————————————————————— */
+
 .benefici-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1360,7 +1229,7 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
   max-width: 660px;
 }
 
-/* ————————————————————— SCHEDA: SINERGIA ————————————————————— */
+
 .sinergia-panel {
   background: var(--sp-bg, #f6f6f2);
   border-radius: var(--radius);
@@ -1400,7 +1269,7 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
   border-top: 1px dashed rgba(0, 0, 0, .12);
 }
 
-/* claim a tre parole nella scheda (es. "Focus · Energia · Adattamento") */
+
 .scheda-claim3 {
   font-family: var(--font-serif);
   font-style: italic;
@@ -1408,16 +1277,10 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
   letter-spacing: .5px;
   margin: -8px 0 16px;
 }
-/* inline-block: crea un punto di a capo attorno al puntino. Senza, le tre
-   parole e i separatori sono attaccati e il browser li legge come una sola
-   parola lunghissima, che su schermo stretto sfonda la colonna. */
+
 .scheda-claim3 .c3-dot { display: inline-block; margin: 0 10px; opacity: .55; }
 
-/* ——— Suggerimento di lingua ————————————————————————————————————
-   La barra la crea js/site.js e compare SOLO a chi ha il browser in una
-   lingua diversa dall'italiano, e solo sulle pagine italiane. Sta in basso,
-   non copre il contenuto e non blocca la navigazione: è un suggerimento,
-   non un popup. Sotto il modale dell'anteprima (z-index 100). */
+
 .lang-hint {
   position: fixed;
   left: 16px; right: 16px; bottom: 18px;
@@ -1463,7 +1326,83 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
   .lang-hint-azioni { width: 100%; justify-content: center; }
 }
 
-/* ————————————————————— UTILITÀ ————————————————————— */
+
+.spiega-wrap { position: relative; display: inline-block; }
+.spiega {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  margin-left: 4px;
+  border: 1.5px solid var(--line);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: 3px;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.spiega:hover,
+.spiega[aria-expanded="true"] { background: var(--green); border-color: var(--green); color: var(--white); }
+
+.spiega-bolla {
+  position: absolute;
+  bottom: calc(100% + 11px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  width: max-content;
+  max-width: min(270px, calc(100vw - 32px));
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 13px 15px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: var(--white);
+  box-shadow: 0 12px 30px rgba(40, 32, 16, .3);
+  text-align: left;
+
+  font-family: var(--font-sans);
+  font-style: normal;
+  letter-spacing: normal;
+  cursor: auto;
+}
+.spiega-bolla[hidden] { display: none; }
+.spiega-bolla::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(calc(-50% + var(--coda-dx, 0px)));
+  border: 7px solid transparent;
+  border-bottom: 0;
+  border-top-color: var(--ink);
+}
+.spiega-titolo {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: #b9c7ac;
+}
+.spiega-testo { font-size: 13.5px; font-weight: 500; line-height: 1.5; }
+.spiega-link {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.spiega-link:hover { color: #cfe0bf; }
+
+
 .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; }
 .table-scroll .ingredienti-table { min-width: 420px; }
 
@@ -1477,7 +1416,7 @@ section[id] { scroll-margin-top: 86px; }
 
 :where(a, button):focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 
-/* ————————————————————— RESPONSIVE ————————————————————— */
+
 @media (max-width: 1100px) {
   .approach-steps { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
 }
@@ -1488,31 +1427,21 @@ section[id] { scroll-margin-top: 86px; }
   .hero-text { margin-left: auto; margin-right: auto; }
   .hero-badges { justify-content: center; }
   .shelf-boxes { flex-wrap: wrap; }
-  .preview-grid { grid-template-columns: 1fr; }
   .scheda-hero-inner { grid-template-columns: 1fr; text-align: center; }
   .breadcrumb { text-align: center; }
   .scheda-meta { justify-content: center; }
-  /* qui la scheda è incolonnata e centrata: i richiami devono seguirla,
-     altrimenti restano appesi a sinistra sotto un testo centrato */
+
   .scheda-cta { justify-content: center; }
   .acquisto { justify-content: center; }
   .scheda-desc { margin: 0 auto; }
   .scheda-cols { grid-template-columns: 1fr; }
-  /* Incolonnate, la barra laterale sale in cima: mappa del corpo e "per chi è
-     pensato" arrivano subito sotto ai tasti d'acquisto, e solo dopo comincia
-     il testo lungo. Su schermo stretto è quello che si vuole vedere per primo.
-     È un riordino solo visivo (order), ma nell'aside non ci sono link né
-     campi: l'ordine di lettura da tastiera resta quello che è. */
+
   .scheda-aside { position: static; order: -1; }
   .contact-grid { grid-template-columns: 1fr; }
   .feature + .feature { border-left: none; border-top: 1px solid var(--line); margin-top: 10px; padding-top: 18px; }
 }
 
-/* Il passaggio al menu a panino era a 860px, ma la riga intera di voci ci sta
-   solo sopra i ~970px: fra 860 e 970 il menu si spezzava in due righe già da
-   prima. Soglia a 1020, che lascia una cinquantina di pixel di margine (la
-   larghezza dipende da come il browser rende il carattere) e fa comparire il
-   menu completo sui portatili da 1024. */
+
 @media (max-width: 1020px) {
   .nav {
     display: none;
@@ -1533,32 +1462,50 @@ section[id] { scroll-margin-top: 86px; }
     to   { opacity: 1; transform: none; }
   }
   .nav a { padding: 14px 28px; width: 100%; border-bottom: none; }
-  /* burger e selettore di lingua restano appaiati a destra, il logo a sinistra */
+
   .nav-burger { display: block; min-width: 44px; min-height: 40px; margin-left: auto; }
   .header-inner { gap: 14px; }
 }
 
 @media (max-width: 560px) {
-  /* Il testo corrente resta a 16px anche su telefono: rimpicciolirlo proprio
-     dove lo schermo è più piccolo e la luce peggiore era la scelta sbagliata. */
+
   .hero-inner { padding: 44px 20px 60px; }
   .hero-flowers { opacity: .3; }
   .container, .header-inner, .footer-inner, .features-wrap, .scheda-body { padding-left: 20px; padding-right: 20px; }
-  .product-grid { padding: 0 20px; gap: 16px; }
+
+
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0 12px; gap: 12px; }
+  .product-card { padding: 16px 10px 14px; }
+
+  .card-art { position: relative; height: 220px; margin-bottom: 10px; }
+  .product-grid .card-art .box-mockup,
+  .product-grid .card-art .box-mockup:hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+
+
+  .card-name { font-size: 21px; margin-bottom: 6px; color: var(--card-dark); }
+  .card-tagline { font-size: 13px; line-height: 1.35; margin-bottom: 6px; }
+  .card-ingredients { font-size: 12.5px; line-height: 1.4; margin-bottom: 14px; }
+  .product-card .btn-outline {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 6px;
+    font-size: 11px;
+    letter-spacing: .6px;
+  }
+
+  .card-actions { gap: 8px; }
+  .card-prezzo { width: 100%; text-align: center; font-size: 19px; }
   .formules, .approach { padding-left: 20px; padding-right: 20px; }
 
   .shelf-boxes { gap: 12px; }
   .box-photo.box-md img { width: 118px; height: 168px; }
   .box-md .box-front { width: 112px; height: 164px; }
 
-  .preview-overlay { padding: 12px; }
-  .preview-card { padding: 22px 18px 18px; }
-  /* la × era 18x30: area di tocco piena, senza spostare il glifo */
-  .preview-close { top: 6px; right: 8px; width: 44px; height: 44px; display: grid; place-items: center; }
-  .preview-head { gap: 14px; }
-  .preview-name { font-size: 27px; }
-  .preview-foot { justify-content: center; }
-  .preview-foot .btn { width: 100%; justify-content: center; }
   .body-schema { height: 200px; }
 
   .sinergia-panel { padding: 22px 18px; }
@@ -1566,26 +1513,46 @@ section[id] { scroll-margin-top: 86px; }
   .features-strip { padding: 22px 8px; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
 
-  /* ——— Ritocchi per il dito e per l'occhio ———————————————————
-     Sotto i 16px iOS ingrandisce da solo la pagina quando si tocca un
-     campo, e poi resta ingrandita: 16px è la soglia per evitarlo.
-     Il selettore ricalca quello del form, altrimenti perde di specificità. */
+
   .contact-form input, .contact-form textarea, select { font-size: 16px; }
 
-  /* bersagli troppo bassi da centrare col pollice: erano 16, 22 e 23px */
+
   .gloss-card .gloss-tag { font-size: 12px; padding: 8px 13px; }
+
+  .spiega { position: relative; }
+  .spiega::after { content: ""; position: absolute; inset: -14px; }
   .breadcrumb a { display: inline-block; padding: 7px 0; }
   .footer-links { gap: 2px 0; }
   .footer-links a { padding: 11px 18px; }
   .footer-links a:first-child { padding-left: 0; }
 
-  /* etichette che sotto i 12px si leggono male su schermo piccolo.
-     Le voci per label-info-hint, table-note e meta-pill sono sparite: ora le
-     misure di base sono già uguali o più grandi, e tenerle qui le avrebbe
-     rimpicciolite. */
+
   .zone-tag { font-size: 12.5px; }
 
-  /* le tabelle a due colonne ci stanno: fai scorrere solo quelle a tre */
+
   .table-scroll .ingredienti-table { min-width: 320px; }
   .ingredienti-table.has-max { min-width: 420px; }
+}
+
+
+@media (max-width: 440px) {
+  .card-art { height: 172px; }
+  .product-grid .card-art .box-mockup,
+  .product-grid .card-art .box-mockup:hover { transform: translate(-50%, -50%); }
+}
+
+@media (max-width: 380px) {
+  .header-inner { gap: 10px; }
+  .logo-main { font-size: 26px; }
+  .header-wa { width: 34px; height: 34px; }
+  .header-wa svg { width: 19px; height: 19px; }
+}
+
+@media (max-width: 360px) {
+  .card-art { height: 138px; }
+  .product-grid .card-art .box-mockup,
+  .product-grid .card-art .box-mockup:hover { transform: translate(-50%, -50%) scale(.8); }
+  .card-name { font-size: 19px; }
+  .card-tagline { font-size: 12.5px; }
+  .card-ingredients { font-size: 12px; }
 }

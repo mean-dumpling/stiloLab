@@ -1,28 +1,10 @@
-/* ============================================================
-   STILO LAB — FUNZIONI CONDIVISE
-   (mockup scatola, anteprima prodotto, helper)
-   Non serve modificare questo file per gestire i prodotti:
-   tutto si configura in data/products.js
-   ============================================================ */
 
-/* ————— STRINGHE D'INTERFACCIA (it / en) —————
-   Il sito esiste in italiano — il default, nella root — e in inglese, nella
-   cartella en/. Ogni pagina dichiara la propria lingua in <html lang>: da lì
-   si sceglie il dizionario. Così non serve un file di script per lingua, e
-   soprattutto niente popup di scelta all'arrivo.
-   I contenuti dei prodotti non stanno qui: le pagine inglesi caricano
-   data/products-en.js al posto di data/products.js. */
+
+
 window.STRINGHE = {
   it: {
-    anteprima: "Anteprima",
-    chiudiAnteprima: "Chiudi anteprima",
     confezione: "Confezione",
-    cosaKicker: "Cos'è", cosaCoda: " e dove agisce",
-    perChiKicker: "Per chi", perChiCoda: " è pensato",
-    quando: "Quando può essere utile",
-    schedaCompleta: "Vai alla scheda completa",
     scopriDiPiu: "Scopri di più",
-    suggerimentoCard: "Clicca per l'anteprima",
     apriMenu: "Apri il menu", chiudiMenu: "Chiudi il menu",
     inArrivo: "In arrivo",
     punti: [
@@ -33,15 +15,8 @@ window.STRINGHE = {
     ]
   },
   en: {
-    anteprima: "Preview",
-    chiudiAnteprima: "Close preview",
     confezione: "Pack of",
-    cosaKicker: "What it is", cosaCoda: " and where it works",
-    perChiKicker: "Who", perChiCoda: " it is for",
-    quando: "When it can help",
-    schedaCompleta: "See the full product page",
     scopriDiPiu: "Find out more",
-    suggerimentoCard: "Click for a preview",
     apriMenu: "Open the menu", chiudiMenu: "Close the menu",
     inArrivo: "Coming soon",
     punti: [
@@ -54,25 +29,55 @@ window.STRINGHE = {
 };
 window.T = window.STRINGHE[document.documentElement.lang === "en" ? "en" : "it"];
 
+
+window.formattaPrezzo = function (v) {
+  if (!v) return "";
+  return document.documentElement.lang === "en"
+    ? "&euro;" + v
+    : v + "&nbsp;&euro;";
+};
+
+
+window.TERMINI = {
+  it: {
+
+    cerca: /biodisponibil(?:it[àa]|e)/i,
+    titolo: "Biodisponibilità",
+    testo: "Quanta parte di un ingrediente il corpo riesce davvero ad assorbire e a usare. Non basta che sia nella capsula.",
+    aria: "Cosa vuol dire biodisponibilità?",
+    piu: "Scopri di più",
+    ancora: "guida-consumatore.html#biodisponibilita"
+  },
+  en: {
+    cerca: /bioavailab(?:ility|le)/i,
+    titolo: "Bioavailability",
+    testo: "How much of an ingredient the body can actually absorb and use. Being in the capsule is not enough.",
+    aria: "What does bioavailability mean?",
+    piu: "Find out more",
+    ancora: "guida-consumatore.html#biodisponibilita"
+  }
+};
+
 window.getProduct = function (id) {
   return window.PRODUCTS.find((p) => p.id === id) || null;
 };
 
-/* ————— MOCKUP SCATOLA —————
-   Se product.image è impostato mostra la foto reale,
-   altrimenti genera la scatola via CSS dai dati. */
+
 window.renderMockup = function (p, size) {
   size = size || "md";
-  /* Prodotto non ancora in vendita: non c'è una confezione da mostrare, al
-     suo posto va il segnaposto con la scritta in diagonale. */
+
   if (p.inArrivo) {
     return `<div class="box-mockup box-arrivo box-${size}" style="--box-color:${p.theme.main};--box-dark:${p.theme.dark}">
       <div class="box-front"><span>${window.T.inArrivo}</span></div>
     </div>`;
   }
   if (p.image) {
+
+    let su = "";
+    if (location.pathname.includes("/prodotti/")) su += "../";
+    if (location.pathname.includes("/en/")) su += "../";
     return `<div class="box-mockup box-photo box-${size}">
-      <img src="${p.image}" alt="${window.T.confezione} ${p.name}">
+      <img src="${su}${p.image}" alt="${window.T.confezione} ${p.name}">
     </div>`;
   }
   const claim = p.boxClaim || null;
@@ -94,94 +99,8 @@ window.renderMockup = function (p, size) {
   </div>`;
 };
 
-/* ————— ANTEPRIMA PRODOTTO (modale con schema visivo) ————— */
-window.openPreview = function (id) {
-  const p = window.getProduct(id);
-  if (!p) return;
 
-  /* L'anteprima si apre sia dalle pagine in root sia dalle schede in prodotti/ */
-  const base = location.pathname.includes("/prodotti/") ? "" : "prodotti/";
 
-  let overlay = document.getElementById("preview-overlay");
-  if (!overlay) {
-    overlay = document.createElement("div");
-    overlay.id = "preview-overlay";
-    overlay.className = "preview-overlay";
-    document.body.appendChild(overlay);
-    overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) window.closePreview();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") window.closePreview();
-    });
-  }
-
-  const chips = p.perChi
-    .map(
-      (c) => `
-      <li class="perchi-chip">
-        <span class="perchi-ico">${window.perChiIcon(c.icon, p.theme.dark)}</span>
-        <span>${c.label}</span>
-      </li>`
-    )
-    .join("");
-
-  const quando = p.quando
-    .map((q) => `<li style="--dot:${p.theme.main}">${q}</li>`)
-    .join("");
-
-  overlay.innerHTML = `
-  <div class="preview-card" role="dialog" aria-modal="true" aria-label="${window.T.anteprima} ${p.name}" style="--pv-main:${p.theme.main};--pv-dark:${p.theme.dark};--pv-soft:${p.theme.soft};--pv-bg:${p.theme.cardBg}">
-    <button class="preview-close" aria-label="${window.T.chiudiAnteprima}" onclick="closePreview()">&times;</button>
-
-    <header class="preview-head">
-      <div class="preview-mock">${window.renderMockup(p, "sm")}</div>
-      <div>
-        <h3 class="preview-name">${p.displayName}</h3>
-        <p class="preview-tagline">${p.tagline}</p>
-      </div>
-    </header>
-
-    <div class="preview-grid">
-      <section class="preview-col preview-cosa">
-        <h4><span class="pv-kicker">${window.T.cosaKicker}</span>${window.T.cosaCoda}</h4>
-        <p>${p.cosa}</p>
-        <div class="preview-body-wrap">
-          ${window.bodySchema(p.zones, p.theme.main)}
-          <span class="zone-tag" style="background:${p.theme.main}">${p.zoneLabel}</span>
-        </div>
-      </section>
-
-      <section class="preview-col preview-chi">
-        <h4><span class="pv-kicker">${window.T.perChiKicker}</span>${window.T.perChiCoda}</h4>
-        <ul class="perchi-list">${chips}</ul>
-        <h4 class="preview-quando-title">${window.T.quando}</h4>
-        <ul class="quando-list">${quando}</ul>
-      </section>
-    </div>
-
-    <footer class="preview-foot">
-      <span class="preview-format">${p.format} · ${p.weight}</span>
-      <a class="btn btn-solid" style="--btn-bg:${p.theme.main};--btn-bg-h:${p.theme.dark}" href="${base}${p.id}.html">
-        ${window.T.schedaCompleta} <span class="btn-arrow">&rarr;</span>
-      </a>
-    </footer>
-  </div>`;
-
-  overlay.classList.add("open");
-  document.body.style.overflow = "hidden";
-};
-
-window.closePreview = function () {
-  const overlay = document.getElementById("preview-overlay");
-  if (overlay) {
-    overlay.classList.remove("open");
-    document.body.style.overflow = "";
-  }
-};
-
-/* ————— Animazioni di comparsa (discrete, disattivate se l'utente
-   preferisce ridurre il movimento) ————— */
 window.initReveal = function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   if (!("IntersectionObserver" in window)) return;
@@ -209,14 +128,14 @@ window.initReveal = function () {
   });
 };
 
-/* ————— Menu attivo + menu mobile ————— */
+
 document.addEventListener("DOMContentLoaded", () => {
   const page = location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav a").forEach((a) => {
     if (a.getAttribute("href") === page) a.classList.add("active");
   });
 
-  /* menu mobile: apertura/chiusura accessibile */
+
   const burger = document.querySelector(".nav-burger");
   const nav = document.querySelector(".nav");
   if (burger && nav) {
@@ -239,19 +158,111 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.initReveal();
   window.initTastiWhatsApp();
+  window.initSpiegaTermini();
   window.suggerisciLingua();
 });
 
-/* ————— TASTO "COMPRA TRAMITE WHATSAPP" —————
-   Il numero NON si scrive nelle pagine: sta in un posto solo, SITE.whatsapp
-   in data/products.js (e products-en.js per il sito inglese). Da lì questa
-   funzione costruisce il link wa.me di ogni scheda, con un messaggio già
-   pronto che dice quale prodotto interessa — il nome lo prende dal tasto
-   stesso (data-prodotto). Così per cambiare numero si tocca una riga sola.
-   Finché SITE.whatsapp è vuoto il tasto resta spento e senza indirizzo, per
-   non pubblicare per sbaglio un link che non porta da nessuna parte. */
+
+window.initSpiegaTermini = function () {
+  const cfg = window.TERMINI[document.documentElement.lang === "en" ? "en" : "it"];
+  if (!cfg || !document.body) return;
+
+  const base = location.pathname.includes("/prodotti/") ? "../" : "";
+  const FUORI = "a, button, h1, script, style, .spiega-wrap, .spiega-bolla," +
+                " .site-header, .site-footer, .preview-card, #biodisponibilita";
+
+
+  const nodi = [];
+  const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(n) {
+      if (!n.nodeValue || !cfg.cerca.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
+      if (!n.parentElement || n.parentElement.closest(FUORI)) return NodeFilter.FILTER_REJECT;
+      const dopo = n.nextSibling;
+      if (dopo && dopo.classList && dopo.classList.contains("spiega-wrap")) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  let n;
+  while ((n = tw.nextNode())) nodi.push(n);
+  if (!nodi.length) return;
+
+  let contatore = 0;
+  nodi.forEach((nodo) => {
+    const m = cfg.cerca.exec(nodo.nodeValue);
+    if (!m) return;
+    const resto = nodo.splitText(m.index + m[0].length);
+
+    const id = "spiega-" + ++contatore;
+    const wrap = document.createElement("span");
+    wrap.className = "spiega-wrap";
+
+    const segno = document.createElement("button");
+    segno.type = "button";
+    segno.className = "spiega";
+    segno.textContent = "?";
+    segno.setAttribute("aria-expanded", "false");
+    segno.setAttribute("aria-label", cfg.aria);
+    segno.setAttribute("aria-describedby", id);
+
+    const bolla = document.createElement("span");
+    bolla.className = "spiega-bolla";
+    bolla.id = id;
+    bolla.setAttribute("role", "tooltip");
+    bolla.hidden = true;
+    bolla.innerHTML =
+      '<span class="spiega-titolo"></span><span class="spiega-testo"></span>' +
+      '<a class="spiega-link" href="' + base + cfg.ancora + '"></a>';
+    bolla.querySelector(".spiega-titolo").textContent = cfg.titolo;
+    bolla.querySelector(".spiega-testo").textContent = cfg.testo;
+    bolla.querySelector(".spiega-link").textContent = cfg.piu + " →";
+    bolla.addEventListener("click", (e) => e.stopPropagation());
+
+    segno.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const eraAperto = segno.getAttribute("aria-expanded") === "true";
+      window.chiudiSpiegazioni();
+      if (eraAperto) return;
+      segno.setAttribute("aria-expanded", "true");
+      bolla.hidden = false;
+
+      bolla.style.transform = "";
+      bolla.style.setProperty("--coda-dx", "0px");
+      const r = bolla.getBoundingClientRect();
+      const margine = 12;
+      let dx = 0;
+      if (r.left < margine) dx = margine - r.left;
+      else if (r.right > window.innerWidth - margine) dx = window.innerWidth - margine - r.right;
+      if (dx) {
+        bolla.style.transform = "translateX(calc(-50% + " + Math.round(dx) + "px))";
+        bolla.style.setProperty("--coda-dx", -Math.round(dx) + "px");
+      }
+    });
+
+    wrap.appendChild(segno);
+    wrap.appendChild(bolla);
+    nodo.parentNode.insertBefore(wrap, resto);
+  });
+
+  if (!window.__spiegaAscolto) {
+    window.__spiegaAscolto = true;
+    document.addEventListener("click", () => window.chiudiSpiegazioni());
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") window.chiudiSpiegazioni();
+    });
+  }
+};
+
+window.chiudiSpiegazioni = function () {
+  document.querySelectorAll('.spiega[aria-expanded="true"]').forEach((s) => {
+    s.setAttribute("aria-expanded", "false");
+    const b = s.parentNode.querySelector(".spiega-bolla");
+    if (b) b.hidden = true;
+  });
+};
+
+
 window.initTastiWhatsApp = function () {
-  const tasti = document.querySelectorAll(".btn-compra-wa");
+  const tasti = document.querySelectorAll(".btn-compra-wa, .header-wa");
   if (!tasti.length) return;
   const numero = ((window.SITE && window.SITE.whatsapp) || "").replace(/\D/g, "");
   const inglese = document.documentElement.lang === "en";
@@ -264,9 +275,11 @@ window.initTastiWhatsApp = function () {
       return;
     }
     const prodotto = a.dataset.prodotto || "";
-    const messaggio = inglese
-      ? `Hello, I would like information about ${prodotto}.`
-      : `Buongiorno, vorrei informazioni su ${prodotto}.`;
+    const messaggio = prodotto
+      ? (inglese ? `Hello, I would like information about ${prodotto}.`
+                 : `Buongiorno, vorrei informazioni su ${prodotto}.`)
+      : (inglese ? "Hello, I'm writing from the Stilo Lab website."
+                 : "Buongiorno, vi scrivo dal sito Stilo Lab.");
     a.href = `https://wa.me/${numero}?text=${encodeURIComponent(messaggio)}`;
     a.target = "_blank";
     a.classList.remove("is-off");
@@ -274,16 +287,7 @@ window.initTastiWhatsApp = function () {
   });
 };
 
-/* ————— SUGGERIMENTO DI LINGUA —————
-   Regola: nessun popup all'arrivo. Chi ha il browser in italiano non vede
-   assolutamente niente — l'italiano è il default del sito e resta tale.
-   Solo a chi ha il browser in un'altra lingua compare una barra discreta in
-   fondo, scritta in inglese (chi la legge non sa l'italiano), che propone la
-   versione inglese. Si può ignorare: non blocca né copre la pagina.
-   L'indirizzo della pagina gemella non è scritto qui, si legge dal
-   <link rel="alternate" hreflang="en"> che ogni pagina ha già: così una
-   pagina nuova funziona da sola, senza toccare questo file.
-   La risposta si ricorda, quindi la barra si vede una volta sola. */
+
 window.suggerisciLingua = function () {
   if (document.documentElement.lang !== "it") return;
   if (document.querySelector(".lang-hint")) return;
@@ -291,15 +295,13 @@ window.suggerisciLingua = function () {
   const gemella = document.querySelector('link[rel="alternate"][hreflang="en"]');
   if (!gemella || !gemella.getAttribute("href")) return;
 
-  /* navigator.languages è l'elenco in ordine di preferenza; se anche una sola
-     delle lingue preferite è l'italiano, non c'è niente da chiedere. */
+
   const lingue = navigator.languages && navigator.languages.length
     ? navigator.languages
     : [navigator.language || ""];
   if (lingue.some((l) => String(l).toLowerCase().indexOf("it") === 0)) return;
 
-  /* in navigazione privata localStorage può lanciare: in quel caso il
-     suggerimento resta valido per la sessione e basta */
+
   const CHIAVE = "stilolab-lingua";
   const ricorda = (v) => { try { localStorage.setItem(CHIAVE, v); } catch (e) {} };
   try { if (localStorage.getItem(CHIAVE)) return; } catch (e) {}
