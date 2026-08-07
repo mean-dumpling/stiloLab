@@ -26,7 +26,7 @@ window.SITE = {
   },
 
   footerNote: "© 2026 Stilo Lab – Farmacia Stilo.\nTutti i diritti riservati.",
-  email: "stilolabsrl@gmail.com",
+  email: "farmastilosrl@gmail.com",
   phone: "+39 0365 502143",
 
 
