@@ -1054,6 +1054,22 @@ a.meta-pill:hover { border-color: var(--p-main); background: var(--p-bg); }
   gap: 44px;
   align-items: start;
 }
+.contact-whatsapp-cta {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 42px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.contact-whatsapp-button {
+  width: min(100%, 440px);
+  justify-content: center;
+  padding: 20px 30px;
+  font-size: 18px;
+}
 .contact-form { display: flex; flex-direction: column; gap: 14px; }
 .contact-form label { font-size: 13.5px; font-weight: 700; color: var(--ink); }
 .contact-form input,
@@ -1438,6 +1454,7 @@ section[id] { scroll-margin-top: 86px; }
 
   .scheda-aside { position: static; order: -1; }
   .contact-grid { grid-template-columns: 1fr; }
+  .contact-whatsapp-cta { min-height: 220px; padding: 28px; }
   .feature + .feature { border-left: none; border-top: 1px solid var(--line); margin-top: 10px; padding-top: 18px; }
 }
 
