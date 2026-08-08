@@ -46,7 +46,7 @@ window.TERMINI = {
     testo: "Quanta parte di un ingrediente il corpo riesce davvero ad assorbire e a usare. Non basta che sia nella capsula.",
     aria: "Cosa vuol dire biodisponibilità?",
     piu: "Scopri di più",
-    ancora: "guida-consumatore.html#biodisponibilita"
+    ancora: "/guida-consumatore/#biodisponibilita"
   },
   en: {
     cerca: /bioavailab(?:ility|le)/i,
@@ -54,7 +54,7 @@ window.TERMINI = {
     testo: "How much of an ingredient the body can actually absorb and use. Being in the capsule is not enough.",
     aria: "What does bioavailability mean?",
     piu: "Find out more",
-    ancora: "guida-consumatore.html#biodisponibilita"
+    ancora: "/en/guida-consumatore/#biodisponibilita"
   }
 };
 
@@ -72,12 +72,8 @@ window.renderMockup = function (p, size) {
     </div>`;
   }
   if (p.image) {
-
-    let su = "";
-    if (location.pathname.includes("/prodotti/")) su += "../";
-    if (location.pathname.includes("/en/")) su += "../";
     return `<div class="box-mockup box-photo box-${size}">
-      <img src="${su}${p.image}" alt="${window.T.confezione} ${p.name}">
+      <img src="${p.image}" alt="${window.T.confezione} ${p.name}">
     </div>`;
   }
   const claim = p.boxClaim || null;
@@ -130,9 +126,10 @@ window.initReveal = function () {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const page = location.pathname.split("/").pop() || "index.html";
+  const normalizza = (path) => path.replace(/index\.html$/, "").replace(/\/?$/, "/");
+  const page = normalizza(location.pathname);
   document.querySelectorAll(".nav a").forEach((a) => {
-    if (a.getAttribute("href") === page) a.classList.add("active");
+    if (normalizza(new URL(a.href, location.href).pathname) === page) a.classList.add("active");
   });
 
 
@@ -167,7 +164,6 @@ window.initSpiegaTermini = function () {
   const cfg = window.TERMINI[document.documentElement.lang === "en" ? "en" : "it"];
   if (!cfg || !document.body) return;
 
-  const base = location.pathname.includes("/prodotti/") ? "../" : "";
   const FUORI = "a, button, h1, script, style, .spiega-wrap, .spiega-bolla," +
                 " .site-header, .site-footer, .preview-card, #biodisponibilita";
 
@@ -211,7 +207,7 @@ window.initSpiegaTermini = function () {
     bolla.hidden = true;
     bolla.innerHTML =
       '<span class="spiega-titolo"></span><span class="spiega-testo"></span>' +
-      '<a class="spiega-link" href="' + base + cfg.ancora + '"></a>';
+      '<a class="spiega-link" href="' + cfg.ancora + '"></a>';
     bolla.querySelector(".spiega-titolo").textContent = cfg.titolo;
     bolla.querySelector(".spiega-testo").textContent = cfg.testo;
     bolla.querySelector(".spiega-link").textContent = cfg.piu + " →";

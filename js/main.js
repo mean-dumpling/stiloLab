@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const art = window.renderMockup(p, "sm");
 
       return `
-      <a class="product-card" href="prodotti/${p.id}.html"
+      <a class="product-card" href="${document.documentElement.lang === "en" ? "/en" : ""}/prodotti/${p.id}/"
          style="--card-bg:${p.theme.cardBg};--card-main:${p.theme.main};--card-dark:${p.theme.dark}">
         <div class="card-art">${art}</div>
         <h3 class="card-name">${p.displayName}</h3>

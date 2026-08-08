@@ -47,7 +47,7 @@ window.PRODUCTS = [
     format: "30 capsule vegetali",
     weight: "19,3 g",
     price: "18,50",
-    image: "assets/img/gearupmockup.webp",
+    image: "/assets/img/gearupmockup.webp",
     cardImage: null,
     illustration: "bolt",
     theme: {
@@ -124,7 +124,7 @@ window.PRODUCTS = [
     format: "30 capsule vegetali",
     weight: "19,3 g",
     price: "18,50",
-    image: "assets/img/detoxamockup.webp",
+    image: "/assets/img/detoxamockup.webp",
     cardImage: null,
     illustration: "purify",
     theme: {
@@ -214,7 +214,7 @@ window.PRODUCTS = [
     format: "30 compresse",
     weight: "41,4 g",
     price: "25,00",
-    image: "assets/img/nevralismockup.webp",
+    image: "/assets/img/nevralismockup.webp",
     cardImage: null,
     illustration: "neuron",
     theme: {
@@ -300,7 +300,7 @@ window.PRODUCTS = [
     format: "30 capsule vegetali",
     weight: "19 g",
     price: "18,50",
-    image: "assets/img/cistoffmockup.webp",
+    image: "/assets/img/cistoffmockup.webp",
     cardImage: null,
     illustration: "berries",
     theme: {
@@ -387,7 +387,7 @@ window.PRODUCTS = [
     format: "30 compresse",
     weight: "33 g",
     price: "18,50",
-    image: "assets/img/flebocaremockup.webp",
+    image: "/assets/img/flebocaremockup.webp",
     cardImage: null,
     illustration: "flow",
     theme: {
